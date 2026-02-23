@@ -1,19 +1,28 @@
-import type { Metadata } from "next"
-import "./globals.css"
+import type { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "css-playground",
   description: "CSS & JS 애니메이션 학습 포트폴리오",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko">
-      <body>{children}</body>
+    <html lang="ko" suppressHydrationWarning>
+      <body className="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
-  )
+  );
 }
