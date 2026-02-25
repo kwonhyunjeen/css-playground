@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/Sidebar";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,12 @@ export default function RootLayout({
         <ThemeProvider defaultTheme="system" enableSystem={true}>
           <div className="flex min-h-screen flex-col">
             <Header />
-            <main className="flex-1">{children}</main>
+            <div className="flex flex-1 overflow-hidden">
+              <aside className="sticky top-0 h-[calc(100vh-57px)] overflow-y-auto border-r border-gray-200 dark:border-gray-800">
+                <Sidebar />
+              </aside>
+              <main className="flex-1 overflow-y-auto p-6">{children}</main>
+            </div>
           </div>
         </ThemeProvider>
       </body>
