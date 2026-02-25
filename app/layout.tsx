@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Marquee } from "@/components/Marquee";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
           <Marquee />
           <Header />
           <main className="px-6 py-10">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
