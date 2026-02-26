@@ -9,7 +9,7 @@ interface ProjectCardProps {
 export function ProjectCard({ project, onClick }: ProjectCardProps) {
   return (
     <button onClick={() => onClick(project)} className="w-full text-left">
-      <div className="group relative overflow-hidden rounded-lg">
+      <div className="group relative cursor-pointer overflow-hidden rounded-lg">
         <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-900">
           <Image
             src={project.thumbnail}
