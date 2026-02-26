@@ -1,4 +1,4 @@
-import type { Category, Project } from "@/types"
+import type { Category, Project } from "@/types";
 
 export const categories: Category[] = [
   {
@@ -34,19 +34,26 @@ export const categories: Category[] = [
         thumbnail: "/thumbnails/placeholder.png",
         tags: ["transform", "perspective", "hover"],
       },
+      {
+        slug: "hover-card",
+        title: "3D Flip Card",
+        description: "perspective와 rotateY를 활용한 카드 뒤집기",
+        thumbnail: "/thumbnails/placeholder.png",
+        tags: ["transform", "perspective", "hover"],
+      },
     ],
   },
-]
+];
 
 export function getCategoryBySlug(slug: string): Category | undefined {
-  return categories.find((c) => c.slug === slug)
+  return categories.find((c) => c.slug === slug);
 }
 
 export function getProjectBySlug(
   categorySlug: string,
-  projectSlug: string
+  projectSlug: string,
 ): Project | undefined {
   return getCategoryBySlug(categorySlug)?.projects.find(
-    (p) => p.slug === projectSlug
-  )
+    (p) => p.slug === projectSlug,
+  );
 }
