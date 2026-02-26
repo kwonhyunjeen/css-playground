@@ -1,3 +1,10 @@
+import { ProjectGrid } from "@/components/ProjectGrid";
+import { categories } from "@/data/categories";
+
+const allProjects = categories.flatMap((cat) =>
+  cat.projects.map((project) => ({ ...project, categorySlug: cat.slug })),
+);
+
 export default function Home() {
   return (
     <div className="space-y-12">
@@ -11,7 +18,7 @@ export default function Home() {
           clip-path, transforms, scroll effects, SVG, and more.
         </p>
       </section>
-      {/* ProjectGrid — Task 8 */}
+      <ProjectGrid projects={allProjects} />
     </div>
   );
 }
