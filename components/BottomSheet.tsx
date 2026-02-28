@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { FlatProject } from "@/types";
+import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 interface BottomSheetProps {
   project: FlatProject;
@@ -33,7 +34,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
     };
   }, []);
 
-  // Esc key (desktop)
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
@@ -42,14 +42,8 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [close]);
 
-  // Overlay click (desktop)
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
-      close();
-    }
-  };
+  useOutsideClick(sheetRef, close);
 
-  // Touch swipe down (mobile)
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
   };
@@ -62,13 +56,8 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
   };
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end"
-      onClick={handleBackdropClick}
-    >
-      {/* Overlay */}
+    <div className="fixed inset-0 z-50 flex items-end">
       <div className="absolute inset-0 bg-black/40" />
-
       {/* Sheet */}
       <div
         ref={sheetRef}
@@ -85,7 +74,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
           <div className="h-1 w-10 rounded-full bg-gray-300 dark:bg-gray-700" />
         </div>
 
-        {/* Close button (mobile) */}
         <button
           onClick={close}
           className="absolute top-4 right-4 rounded-full p-1 text-gray-400 hover:text-gray-600 md:hidden dark:hover:text-gray-200"
@@ -94,7 +82,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
           <X className="h-5 w-5" />
         </button>
 
-        {/* Content */}
         <div className="flex-1 overflow-y-auto px-6 py-4">
           <h2 id={titleId} className="text-2xl font-semibold">
             {project.title}
