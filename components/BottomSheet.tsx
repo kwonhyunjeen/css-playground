@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { FlatProject } from "@/types";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
 
 interface BottomSheetProps {
   project: FlatProject;
@@ -43,6 +44,16 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
   }, [close]);
 
   useOutsideClick(sheetRef, close);
+  useFocusTrap(sheetRef);
+
+  // Focus management: capture trigger → focus container → restore on unmount
+  useEffect(() => {
+    const trigger = document.activeElement as HTMLElement | null;
+    sheetRef.current?.focus();
+    return () => {
+      trigger?.focus();
+    };
+  }, []);
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
@@ -64,10 +75,11 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
+        tabIndex={-1}
         onAnimationEnd={handleAnimationEnd}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
-        className={`relative z-10 flex h-[85vh] w-full flex-col rounded-t-2xl bg-white dark:bg-gray-950 ${isClosing ? "animate-slide-down" : "animate-slide-up"}`}
+        className={`relative z-10 flex h-[85vh] w-full flex-col rounded-t-2xl bg-white outline-none dark:bg-gray-950 ${isClosing ? "animate-slide-down" : "animate-slide-up"}`}
       >
         {/* Handle bar */}
         <div className="flex justify-center pt-3 pb-1">
