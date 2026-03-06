@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ProjectCard } from "@/components/ProjectCard";
+import { BottomSheet } from "@/components/BottomSheet";
 import type { FlatProject } from "@/types";
 
 interface ProjectGridProps {
@@ -22,14 +23,8 @@ export function ProjectGrid({ projects }: ProjectGridProps) {
           />
         ))}
       </div>
-      {/* TODO: BottomSheet  */}
       {selected && (
-        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-lg bg-gray-900 px-4 py-2 text-sm text-white">
-          {selected.title} selected —{" "}
-          <button onClick={() => setSelected(null)} className="underline">
-            close
-          </button>
-        </div>
+        <BottomSheet project={selected} onClose={() => setSelected(null)} />
       )}
     </>
   );
