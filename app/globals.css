@@ -8,6 +8,11 @@
   --bg-color-light-default: hsl(220, 14%, 96%);
   /* Dark mode default */
   --bg-color-dark-default: hsl(207, 95%, 8%);
+
+  /* animations */
+  --animate-slide-up: slide-up 0.85s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  --animate-slide-down: slide-down 0.65s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  --animate-fade-up: fade-up 0.4s ease both 0.4s;
 }
 
 @keyframes marquee {
@@ -41,14 +46,6 @@
   }
 }
 
-.animate-slide-up {
-  animation: slide-up 0.85s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-}
-
-.animate-slide-down {
-  animation: slide-down 0.65s cubic-bezier(0.32, 0.72, 0, 1) forwards;
-}
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -58,10 +55,6 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.4s ease both 0.4s;
 }
 
 :root[data-theme="light"] {
