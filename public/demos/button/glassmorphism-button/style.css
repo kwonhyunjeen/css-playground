@@ -1,0 +1,533 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: #06050e;
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none;
+}
+
+/* ══════════════════════════════════════
+   Background blobs
+══════════════════════════════════════ */
+.blobs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  transform: translate(-50%, -50%);
+}
+
+.blob--a {
+  width: 520px;
+  height: 420px;
+  background: #1a1560;
+  opacity: 0.32;
+  top: 35%;
+  left: 38%;
+}
+
+.blob--b {
+  width: 440px;
+  height: 380px;
+  background: #0c2d50;
+  opacity: 0.28;
+  top: 65%;
+  left: 68%;
+}
+
+.blob--c {
+  width: 380px;
+  height: 320px;
+  background: #2a1040;
+  opacity: 0.25;
+  top: 20%;
+  left: 68%;
+}
+
+/* ══════════════════════════════════════
+   Big Glass Panel — Level 1
+══════════════════════════════════════ */
+.glass-panel {
+  position: relative;
+  z-index: 1;
+  width: 360px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(48px) saturate(1.6);
+  -webkit-backdrop-filter: blur(48px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  box-shadow:
+    0 24px 80px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ══════════════════════════════════════
+   Tab Panels — CSS-only switching
+══════════════════════════════════════ */
+.tab-panels {
+  min-height: 216px;
+}
+
+.panel {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Category accent colors via CSS custom properties */
+.panel--01 {
+  --accent: 74, 158, 255;
+}
+.panel--02 {
+  --accent: 255, 159, 10;
+}
+.panel--03 {
+  --accent: 52, 199, 89;
+}
+.panel--04 {
+  --accent: 142, 142, 147;
+}
+
+#tab-01:checked ~ .glass-panel .panel--01 {
+  display: grid;
+}
+#tab-02:checked ~ .glass-panel .panel--02 {
+  display: grid;
+}
+#tab-03:checked ~ .glass-panel .panel--03 {
+  display: grid;
+}
+#tab-04:checked ~ .glass-panel .panel--04 {
+  display: grid;
+}
+
+/* ══════════════════════════════════════
+   Card — Level 3
+══════════════════════════════════════ */
+.card-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 18px 12px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.card-label:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.card-input:checked + .card-label {
+  border-color: rgba(var(--accent), 0.28);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(var(--accent), 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ── Card Icon wrapper ── */
+.card-icon {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+}
+
+.ci-detail,
+.ci-glass,
+.ci-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+/* SVG icon — z-index top */
+.ci-detail {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ci-detail svg {
+  width: 22px;
+  height: 22px;
+  fill: rgba(255, 255, 255, 0.38);
+  transition:
+    fill 0.28s ease,
+    filter 0.28s ease;
+}
+
+/* Glass frost layer */
+.ci-glass {
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition:
+    backdrop-filter 0.3s ease,
+    background 0.3s ease;
+}
+
+.ci-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Rising 45° glass background — z-index bottom */
+.ci-bg {
+  z-index: 0;
+  opacity: 0;
+  transform-origin: 100% 100%;
+  transform: translate(0, 0) rotate(0deg);
+  transition:
+    transform 0.3s cubic-bezier(0.38, -0.12, 0.15, 1.65),
+    opacity 0.3s ease;
+  background: radial-gradient(
+    circle,
+    rgba(var(--accent), 0.6) 0%,
+    rgba(var(--accent), 0.28) 100%
+  );
+}
+
+/* Active card states */
+.card-input:checked + .card-label .ci-detail svg {
+  fill: rgba(255, 255, 255, 0.95);
+  filter: drop-shadow(0 1px 4px rgba(var(--accent), 0.5));
+}
+
+.card-input:checked + .card-label .ci-glass {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.card-input:checked + .card-label .ci-glass::after {
+  background: rgba(var(--accent), 0.28);
+  opacity: 1;
+}
+
+.card-input:checked + .card-label .ci-bg {
+  opacity: 1;
+  transform: translate(5px, -5px) rotate(15deg);
+}
+
+/* Card label text */
+.card-name {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+
+.card-input:checked + .card-label .card-name {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ══════════════════════════════════════
+   Glass Tab Bar — Level 2
+══════════════════════════════════════ */
+.tab-bar {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.11);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.tab-label {
+  -webkit-tap-highlight-color: transparent;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Tab Icon ── */
+.tab-icon {
+  width: 28px;
+  height: 28px;
+  position: relative;
+}
+
+.ti-detail,
+.ti-glass,
+.ti-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.ti-detail {
+  z-index: 2;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0));
+  transition: filter 0.3s ease;
+}
+
+.ti-detail::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(160, 160, 180, 0.6) 30%,
+    rgba(200, 200, 220, 0.85) 70%
+  );
+  transition: background 0.3s ease;
+}
+
+.ti-glass {
+  z-index: 1;
+}
+
+.ti-glass::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition:
+    backdrop-filter 0.3s ease,
+    background 0.3s ease;
+}
+
+.ti-glass::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(4px);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.ti-bg {
+  z-index: 0;
+  opacity: 0;
+  transform-origin: 100% 100%;
+  transform: translate(0, 0) rotate(0deg);
+  transition:
+    transform 0.3s cubic-bezier(0.38, -0.12, 0.15, 1.65),
+    opacity 0.3s ease;
+}
+
+/* ── Clip-paths per tab icon ── */
+.tab-icon--01 .ti-detail::after {
+  clip-path: url(#ti-detail-01);
+}
+.tab-icon--01 .ti-glass,
+.tab-icon--01 .ti-glass::before,
+.tab-icon--01 .ti-glass::after,
+.tab-icon--01 .ti-bg {
+  clip-path: url(#ti-shape-01);
+}
+
+.tab-icon--02 .ti-detail::after {
+  clip-path: url(#ti-detail-02);
+}
+.tab-icon--02 .ti-glass,
+.tab-icon--02 .ti-glass::before,
+.tab-icon--02 .ti-glass::after,
+.tab-icon--02 .ti-bg {
+  clip-path: url(#ti-shape-02);
+}
+
+.tab-icon--03 .ti-detail::after {
+  clip-path: url(#ti-detail-03);
+}
+.tab-icon--03 .ti-glass,
+.tab-icon--03 .ti-glass::before,
+.tab-icon--03 .ti-glass::after,
+.tab-icon--03 .ti-bg {
+  clip-path: url(#ti-shape-03);
+}
+
+.tab-icon--04 .ti-detail::after {
+  clip-path: url(#ti-detail-04);
+}
+.tab-icon--04 .ti-glass,
+.tab-icon--04 .ti-glass::before,
+.tab-icon--04 .ti-glass::after,
+.tab-icon--04 .ti-bg {
+  clip-path: url(#ti-shape-04);
+}
+
+/* ── Tab bar active states (CSS-only via ~ selector) ── */
+
+/* Tab 01 active */
+#tab-01:checked ~ .glass-panel .tab-icon--01 .ti-detail {
+  filter: drop-shadow(1px 1px 3px rgba(74, 158, 255, 0.45));
+}
+#tab-01:checked ~ .glass-panel .tab-icon--01 .ti-detail::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 1) 70%
+  );
+}
+#tab-01:checked ~ .glass-panel .tab-icon--01 .ti-glass::before {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+#tab-01:checked ~ .glass-panel .tab-icon--01 .ti-glass::after {
+  background: rgba(74, 158, 255, 0.42);
+  opacity: 1;
+}
+#tab-01:checked ~ .glass-panel .tab-icon--01 .ti-bg {
+  opacity: 1;
+  transform: translate(4px, -4px) rotate(15deg);
+  background: radial-gradient(
+    circle,
+    rgba(74, 158, 255, 0.9) 0%,
+    rgba(74, 158, 255, 0.5) 100%
+  );
+}
+
+/* Tab 02 active */
+#tab-02:checked ~ .glass-panel .tab-icon--02 .ti-detail {
+  filter: drop-shadow(1px 1px 3px rgba(255, 159, 10, 0.45));
+}
+#tab-02:checked ~ .glass-panel .tab-icon--02 .ti-detail::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 1) 70%
+  );
+}
+#tab-02:checked ~ .glass-panel .tab-icon--02 .ti-glass::before {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+#tab-02:checked ~ .glass-panel .tab-icon--02 .ti-glass::after {
+  background: rgba(255, 159, 10, 0.42);
+  opacity: 1;
+}
+#tab-02:checked ~ .glass-panel .tab-icon--02 .ti-bg {
+  opacity: 1;
+  transform: translate(4px, -4px) rotate(15deg);
+  background: radial-gradient(
+    circle,
+    rgba(255, 159, 10, 0.9) 0%,
+    rgba(255, 159, 10, 0.5) 100%
+  );
+}
+
+/* Tab 03 active */
+#tab-03:checked ~ .glass-panel .tab-icon--03 .ti-detail {
+  filter: drop-shadow(1px 1px 3px rgba(52, 199, 89, 0.45));
+}
+#tab-03:checked ~ .glass-panel .tab-icon--03 .ti-detail::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 1) 70%
+  );
+}
+#tab-03:checked ~ .glass-panel .tab-icon--03 .ti-glass::before {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+#tab-03:checked ~ .glass-panel .tab-icon--03 .ti-glass::after {
+  background: rgba(52, 199, 89, 0.42);
+  opacity: 1;
+}
+#tab-03:checked ~ .glass-panel .tab-icon--03 .ti-bg {
+  opacity: 1;
+  transform: translate(4px, -4px) rotate(15deg);
+  background: radial-gradient(
+    circle,
+    rgba(52, 199, 89, 0.9) 0%,
+    rgba(52, 199, 89, 0.5) 100%
+  );
+}
+
+/* Tab 04 active */
+#tab-04:checked ~ .glass-panel .tab-icon--04 .ti-detail {
+  filter: drop-shadow(1px 1px 3px rgba(142, 142, 147, 0.45));
+}
+#tab-04:checked ~ .glass-panel .tab-icon--04 .ti-detail::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.25) 30%,
+    rgba(255, 255, 255, 1) 70%
+  );
+}
+#tab-04:checked ~ .glass-panel .tab-icon--04 .ti-glass::before {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+#tab-04:checked ~ .glass-panel .tab-icon--04 .ti-glass::after {
+  background: rgba(142, 142, 147, 0.42);
+  opacity: 1;
+}
+#tab-04:checked ~ .glass-panel .tab-icon--04 .ti-bg {
+  opacity: 1;
+  transform: translate(4px, -4px) rotate(15deg);
+  background: radial-gradient(
+    circle,
+    rgba(142, 142, 147, 0.9) 0%,
+    rgba(142, 142, 147, 0.5) 100%
+  );
+}
