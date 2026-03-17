@@ -1,25 +1,62 @@
 import Image from "next/image";
-import type { FlatProject } from "@/types";
+import Link from "next/link";
+import type { FlatProject, Thumbnail } from "@/types";
 
-interface ProjectCardProps {
-  project: FlatProject;
-  onClick: (project: FlatProject) => void;
+function ThumbnailRenderer({
+  thumbnail,
+  title,
+}: {
+  thumbnail: Thumbnail;
+  title: string;
+}) {
+  if (thumbnail.type === "iframe") {
+    return (
+      <div className="absolute inset-0 overflow-hidden">
+        <iframe
+          src={thumbnail.src}
+          title={title}
+          tabIndex={-1}
+          className="pointer-events-none absolute top-0 left-0 h-[400%] w-[400%] origin-top-left scale-[0.25] border-none"
+        />
+      </div>
+    );
+  }
+
+  if (thumbnail.type === "video") {
+    return (
+      <video
+        src={thumbnail.src}
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={thumbnail.src}
+      alt={title}
+      fill
+      className="object-cover"
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+    />
+  );
 }
 
-export function ProjectCard({ project, onClick }: ProjectCardProps) {
+export function ProjectCard({ project }: { project: FlatProject }) {
   return (
-    <button
-      onClick={() => onClick(project)}
+    <Link
+      href={`/${project.categorySlug}/${project.slug}`}
       className="group/card w-full text-left focus-visible:outline-none"
     >
       <div className="group/image relative cursor-pointer overflow-hidden rounded-lg">
         <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-900">
-          <Image
-            src={project.thumbnail}
-            alt={project.title}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          <ThumbnailRenderer
+            thumbnail={project.thumbnail}
+            title={project.title}
           />
         </div>
         {/* Hover overlay */}
@@ -35,6 +72,6 @@ export function ProjectCard({ project, onClick }: ProjectCardProps) {
       <p className="mt-2 text-sm font-medium group-focus-visible/card:underline">
         {project.title}
       </p>
-    </button>
+    </Link>
   );
 }
