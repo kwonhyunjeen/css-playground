@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getProjectBySlug } from "@/data/categories";
-import { ProjectModal } from "@/components/ProjectModal";
+import { BottomSheet } from "@/components/BottomSheet";
 
 export default async function ModalPage({
   params,
@@ -12,5 +12,5 @@ export default async function ModalPage({
 
   if (!projectData) notFound();
 
-  return <ProjectModal project={{ ...projectData, categorySlug: category }} />;
+  return <BottomSheet project={{ ...projectData, categorySlug: category }} />;
 }
