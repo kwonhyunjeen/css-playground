@@ -12,8 +12,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -22,6 +24,7 @@ export default function RootLayout({
           <Marquee />
           <Header />
           <main className="px-6 py-10">{children}</main>
+          {modal}
           <Footer />
         </ThemeProvider>
       </body>

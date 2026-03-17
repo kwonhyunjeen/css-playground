@@ -1,30 +1,23 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import type { FlatProject } from "@/types";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 
-interface BottomSheetProps {
-  project: FlatProject;
-  onClose: () => void;
-}
-
-export function BottomSheet({ project, onClose }: BottomSheetProps) {
+export function BottomSheet({ project }: { project: FlatProject }) {
+  const router = useRouter();
   const [isClosing, setIsClosing] = useState(false);
   const sheetRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef<number | null>(null);
-  const titleId = `bottom-sheet-title-${project.slug}`;
+  const titleId = `modal-title-${project.slug}`;
 
-  const close = useCallback(() => {
-    setIsClosing(true);
-  }, []);
+  const close = useCallback(() => setIsClosing(true), []);
 
   const handleAnimationEnd = () => {
-    if (isClosing) {
-      onClose();
-    }
+    if (isClosing) router.back();
   };
 
   // Body scroll lock
@@ -35,6 +28,7 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
     };
   }, []);
 
+  // Escape key
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
@@ -42,9 +36,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [close]);
-
-  useOutsideClick(sheetRef, close);
-  useFocusTrap(sheetRef);
 
   // Focus management: capture trigger → focus container → restore on unmount
   useEffect(() => {
@@ -54,6 +45,9 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
       trigger?.focus();
     };
   }, []);
+
+  useOutsideClick(sheetRef, close);
+  useFocusTrap(sheetRef);
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartY.current = e.touches[0].clientY;
@@ -69,7 +63,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-end">
       <div className="absolute inset-0 bg-black/40" />
-      {/* Sheet */}
       <div
         ref={sheetRef}
         role="dialog"
@@ -85,7 +78,6 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
         <div className="flex justify-center pt-3 pb-1">
           <div className="h-1 w-10 rounded-full bg-gray-300 dark:bg-gray-700" />
         </div>
-
         <button
           onClick={close}
           className="absolute top-4 right-4 rounded-full p-1 text-gray-400 hover:text-gray-600 md:hidden dark:hover:text-gray-200"
@@ -93,8 +85,7 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
         >
           <X className="h-5 w-5" />
         </button>
-
-        <div className="flex-1 overflow-y-auto px-6 py-4">
+        <div className="flex flex-1 flex-col overflow-hidden px-6 py-4">
           <h2 id={titleId} className="text-2xl font-semibold">
             {project.title}
           </h2>
@@ -113,21 +104,14 @@ export function BottomSheet({ project, onClose }: BottomSheetProps) {
             ))}
           </div>
 
-          {/* Demo placeholder */}
-          <div className="mt-6 flex h-64 items-center justify-center rounded-lg bg-gray-100 text-sm text-gray-400 dark:bg-gray-900">
-            Demo coming soon
+          {/* Demo */}
+          <div className="mt-6 flex-1 overflow-hidden rounded-lg">
+            <iframe
+              src={`/demos/${project.categorySlug}/${project.slug}/index.html`}
+              className="h-full w-full border-none"
+              title={project.title}
+            />
           </div>
-        </div>
-
-        <div className="animate-fade-up absolute bottom-[30px] left-1/2 -translate-x-1/2">
-          <a
-            href={`/${project.categorySlug}/${project.slug}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-14 items-center rounded-md bg-amber-300 px-6 text-sm font-medium whitespace-nowrap text-gray-900 transition-colors hover:bg-amber-400"
-          >
-            Visit Resource
-          </a>
         </div>
       </div>
     </div>

@@ -1,8 +1,13 @@
+export type Thumbnail =
+  | { type: "img"; src: string }
+  | { type: "iframe"; src: string }
+  | { type: "video"; src: string };
+
 export interface Project {
   slug: string;
   title: string;
   description: string;
-  thumbnail: string; // path relative to /public, e.g. "/thumbnails/circle-reveal.gif"
+  thumbnail: Thumbnail;
   tags: string[];
 }
 
