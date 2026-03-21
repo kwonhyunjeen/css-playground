@@ -26,6 +26,24 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "glassmorphism",
+    title: "Glassmorphism",
+    description: "backdrop-filter와 투명도를 활용한 유리 질감 UI 효과",
+    projects: [
+      {
+        slug: "glassmorphism-tab-bar",
+        title: "Glassmorphism Tab Bar",
+        description:
+          "CSS-only 탭 전환과 3단 레이어 유리 효과를 결합한 인터랙티브 패널",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/glassmorphism/glassmorphism-tab-bar/index.html",
+        },
+        tags: ["glassmorphism"],
+      },
+    ],
+  },
+  {
     slug: "card-effects",
     title: "Card Effects",
     description: "CSS transform과 perspective를 활용한 카드 효과",
