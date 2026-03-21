@@ -44,6 +44,24 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "interaction",
+    title: "Interaction",
+    description: "hover, click 등 사용자 인터랙션을 활용한 UI 효과",
+    projects: [
+      {
+        slug: "dots-menu",
+        title: "Dots Menu Animation",
+        description:
+          "9개 점 메뉴를 hover하면 사방으로 아이콘이 펼쳐지는 애니메이션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/dots-menu/index.html",
+        },
+        tags: ["interaction", "hover", "animation"],
+      },
+    ],
+  },
+  {
     slug: "card-effects",
     title: "Card Effects",
     description: "CSS transform과 perspective를 활용한 카드 효과",
