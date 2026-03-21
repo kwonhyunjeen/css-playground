@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
-        <ThemeProvider defaultTheme="system" enableSystem={true}>
+        <ThemeProvider defaultTheme="dark" enableSystem={false}>
           <Marquee />
           <Header />
           <main className="px-6 py-10">{children}</main>
