@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Açaí Tides — Scroll Animation Showcase</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="hgallery">
+      <div class="hgallery-scroll-area" id="hgalleryContainer">
+        <div class="hgallery-sticky">
+          <!-- Info card overlay — top-left -->
+          <div class="hgallery-info">
+            <h2 class="hgallery-info-title" id="hgTitle">HAPPINESS</h2>
+            <p class="hgallery-info-desc" id="hgDesc">
+              People around the world love our açaí bowls — and they're adorable
+              about it. Some sit in the park, taking their sweet time. Others
+              grab one to-go and enjoy it at their desk between meetings. Either
+              way, they always leave a little trail of photos behind. Here's to
+              the ones who make every bowl a moment.
+            </p>
+          </div>
+
+          <!-- Image strip — 5 images, different widths -->
+          <div class="hgallery-strip" id="hgStrip">
+            <div
+              class="hg-placeholder"
+              style="
+                width: 130vh;
+                background: url(&quot;./section1-1.jpg&quot;) no-repeat center
+                  center/cover;
+              "
+            ></div>
+            <div
+              class="hg-placeholder"
+              style="
+                width: 130vh;
+                background: url(&quot;./section1-2.jpg&quot;) no-repeat center
+                  center/cover;
+              "
+            ></div>
+            <div
+              class="hg-placeholder"
+              style="
+                width: 80vh;
+                background: url(&quot;./section1-3.jpg&quot;) no-repeat center
+                  center/cover;
+              "
+            ></div>
+            <div
+              class="hg-placeholder"
+              style="
+                width: 100vh;
+                background: url(&quot;./section1-4.jpg&quot;) no-repeat center
+                  center/cover;
+              "
+            ></div>
+            <div
+              class="hg-placeholder"
+              style="
+                width: 80vh;
+                background: url(&quot;./section1-5.jpg&quot;) no-repeat center
+                  center/cover;
+              "
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="our-bowls">
+      <div class="our-bowls-title-wrap">
+        <h2 class="our-bowls-title" id="bowlsTitle">Our Bowls</h2>
+      </div>
+
+      <div class="bowls-grid" id="bowlsGrid">
+        <!-- Card 1: Amazon Classic -->
+        <div class="bowl-card" data-index="0">
+          <div class="bowl-card-inner">
+            <div class="bowl-card-img">
+              <img src="section2-original-bowl.png" />
+            </div>
+            <div class="bowl-card-body">
+              <div class="bowl-num"></div>
+              <div>
+                <h3 class="bowl-name">Original Bowl</h3>
+                <p class="bowl-desc">
+                  The original. Pure Amazonian açaí blended thick, topped with
+                  guaraná syrup, sliced banana, and crunchy granola. The bowl
+                  that started it all — straight from the streets of São Paulo.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Aloha Bowl -->
+        <div class="bowl-card" data-index="1">
+          <div class="bowl-card-inner">
+            <div class="bowl-card-img">
+              <img src="section2-tropical-bowl.png" />
+            </div>
+            <div class="bowl-card-body">
+              <div class="bowl-num"></div>
+              <div>
+                <h3 class="bowl-name">Tropical Bowl</h3>
+                <p class="bowl-desc">
+                  Island energy in every spoonful. Açaí base swirled with
+                  coconut milk, crowned with fresh lilikoi, toasted macadamia,
+                  coconut flakes, and a drizzle of local honey.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Le Parisien -->
+        <div class="bowl-card" data-index="2">
+          <div class="bowl-card-inner">
+            <div class="bowl-card-img">
+              <img src="section2-amond-bowl.png" />
+            </div>
+            <div class="bowl-card-body">
+              <div class="bowl-num"></div>
+              <div>
+                <h3 class="bowl-name">Amond Bowl</h3>
+                <p class="bowl-desc">
+                  Where açaí meets French pâtisserie. A velvety base finished
+                  with lavender honey, crushed pistachio, and a delicate
+                  macaron. Elegant, unexpected, unforgettable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="references">
+      <div class="references-scroll-area" id="stackContainer">
+        <div class="references-sticky">
+          <div class="references-label">
+            <span class="section-label">Locations</span>
+            <span class="references-counter"
+              ><span id="currentIndex">01</span> / 03</span
+            >
+          </div>
+
+          <div class="references-dots" id="refDots">
+            <div class="ref-dot is-active" data-index="0"></div>
+            <div class="ref-dot" data-index="1"></div>
+            <div class="ref-dot" data-index="2"></div>
+          </div>
+
+          <!-- Card 1: Brazil -->
+          <div class="stack-card is-active" data-card="0">
+            <a class="stack-card-link" href="#"></a>
+            <div class="stack-card-header">
+              <div class="stack-card-meta">
+                <div>
+                  <div class="stack-card-tag">
+                    <svg viewBox="0 0 7 6">
+                      <path
+                        d="M3.07.75a.5.5 0 01.86 0l2.17 3.75a.5.5 0 01-.43.75H1.33a.5.5 0 01-.43-.75z"
+                      /></svg
+                    >Rainforest Origin
+                  </div>
+                </div>
+                <div class="stack-card-index">01</div>
+              </div>
+              <h2 class="stack-card-title">
+                <span style="transition-delay: 0s">Raízes</span>&nbsp;<span
+                  style="transition-delay: 0.06s"
+                  >da</span
+                >&nbsp;<span style="transition-delay: 0.12s">Terra</span>&nbsp;
+                <span style="transition-delay: 0.18s">–</span>&nbsp;<span
+                  style="transition-delay: 0.24s"
+                  >São</span
+                >&nbsp;<span style="transition-delay: 0.3s">Paulo</span>
+              </h2>
+            </div>
+            <div class="stack-card-image">
+              <img src="section3-brazil.jpeg" />
+              <div class="stack-card-readmore">
+                Explore<svg viewBox="0 0 24 24">
+                  <path
+                    d="M7 17L17 7M17 7H7M17 7V17"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Hawaii -->
+          <div class="stack-card" data-card="1">
+            <a class="stack-card-link" href="#"></a>
+            <div class="stack-card-header">
+              <div class="stack-card-meta">
+                <div>
+                  <div class="stack-card-tag">
+                    <svg viewBox="0 0 7 6">
+                      <path
+                        d="M3.07.75a.5.5 0 01.86 0l2.17 3.75a.5.5 0 01-.43.75H1.33a.5.5 0 01-.43-.75z"
+                      /></svg
+                    >Ocean Vibes
+                  </div>
+                </div>
+                <div class="stack-card-index">02</div>
+              </div>
+              <h2 class="stack-card-title">
+                <span style="transition-delay: 0s">Kai</span>&nbsp;<span
+                  style="transition-delay: 0.06s"
+                  >Bowls</span
+                >&nbsp;
+                <span style="transition-delay: 0.12s">–</span>&nbsp;<span
+                  style="transition-delay: 0.18s"
+                  >Honolulu</span
+                >
+              </h2>
+            </div>
+            <div class="stack-card-image">
+              <img src="section3-hawaii.jpg" />
+              <div class="stack-card-readmore">
+                Explore<svg viewBox="0 0 24 24">
+                  <path
+                    d="M7 17L17 7M17 7H7M17 7V17"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Paris -->
+          <div class="stack-card" data-card="2">
+            <a class="stack-card-link" href="#"></a>
+            <div class="stack-card-header">
+              <div class="stack-card-meta">
+                <div>
+                  <div class="stack-card-tag">
+                    <svg viewBox="0 0 7 6">
+                      <path
+                        d="M3.07.75a.5.5 0 01.86 0l2.17 3.75a.5.5 0 01-.43.75H1.33a.5.5 0 01-.43-.75z"
+                      /></svg
+                    >Pâtisserie Fusion
+                  </div>
+                </div>
+                <div class="stack-card-index">03</div>
+              </div>
+              <h2 class="stack-card-title">
+                <span style="transition-delay: 0s">Maison</span>&nbsp;<span
+                  style="transition-delay: 0.06s"
+                  >Açaí</span
+                >&nbsp;
+                <span style="transition-delay: 0.12s">–</span>&nbsp;<span
+                  style="transition-delay: 0.18s"
+                  >Paris</span
+                >
+              </h2>
+            </div>
+            <div class="stack-card-image">
+              <img src="section3-paris.jpg" />
+              <div class="stack-card-readmore">
+                Explore<svg viewBox="0 0 24 24">
+                  <path
+                    d="M7 17L17 7M17 7H7M17 7V17"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+     SECTIONS 2+3: CONNECT + NEWSLETTER/FOOTER
+     Wrapped in shared article (same as original)
+     ========================================== -->
+    <article class="relative" id="connectFinaleArticle">
+      <!-- SECTION 2: CONNECT CTA -->
+      <section class="connect" id="connectSection">
+        <!-- Fixed background with clip-path containment -->
+        <div class="connect-bg-clip">
+          <div class="connect-bg-fixed">
+            <img
+              src="https://kineticsplay.com/wp-content/uploads/6mYXM.png"
+              alt=""
+              loading="lazy"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+              "
+            />
+          </div>
+        </div>
+
+        <!-- Main content — left aligned -->
+        <div class="connect-inner">
+          <div style="display: flex; flex-direction: column; gap: 32px">
+            <!-- Label: "Connect" with dot -->
+            <div class="connect-label-row">
+              <div class="connect-label-dot" id="connectDot"></div>
+              <div class="connect-label-text char-reveal" id="connectLabel">
+                <!-- JS will split into per-character spans -->
+                Connect
+              </div>
+            </div>
+
+            <!-- Big heading: per-character reveal -->
+            <h2 class="connect-heading" id="connectHeading">
+              <!-- JS will split into per-character spans -->
+              FIND YOUR BOWL BRING YOUR VIBE
+            </h2>
+
+            <!-- Sparkle button -->
+            <div>
+              <button class="btn-sparkle">
+                <div class="sparkle-icon">
+                  <!-- First set (visible, hides on hover) -->
+                  <div class="line line-r"></div>
+                  <div class="line line-l"></div>
+                  <div class="line line-t"></div>
+                  <div class="line line-b"></div>
+                  <!-- Second set (hidden, appears on hover) -->
+                  <div class="line line2-r"></div>
+                  <div class="line line2-l"></div>
+                  <div class="line line2-t"></div>
+                  <div class="line line2-b"></div>
+                </div>
+                <div class="btn-sparkle-label">
+                  <a href="#">Visit us</a>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating sticky image — bottom right -->
+        <div class="connect-float-wrap">
+          <div class="connect-float-img" id="connectFloat"></div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     SECTION 3: NEWSLETTER + FOOTER (UNIFIED)
+     Fixed bg revealed as Section 2 scrolls away
+     ========================================== -->
+      <section class="finale" id="finaleSection">
+        <!-- Fixed background with clip-path containment -->
+        <div class="finale-bg-clip" id="finaleBgClip">
+          <div class="finale-bg-fixed">
+            <!-- <div class="finale-bg-img"></div> -->
+            <img src="footer-house.jpg" />
+          </div>
+        </div>
+
+        <!-- Newsletter card — sticky top-right -->
+        <div class="finale-card-area">
+          <div class="finale-card-grid">
+            <!-- Spacer (left column) -->
+            <div></div>
+
+            <!-- Newsletter card (right column) -->
+            <div class="nl-card">
+              <div class="nl-card-top">
+                <h3 class="nl-card-title word-reveal" id="nlTitle">
+                  Fresh from the Bowl
+                </h3>
+                <p class="nl-card-desc" id="nlDesc">
+                  New flavors, seasonal specials, and stories from our three
+                  corners of the world. We share what inspires our bowls — the
+                  ingredients, the people, the places.
+                </p>
+              </div>
+
+              <!-- Privacy (collapses when not focused) -->
+              <div class="nl-privacy-wrap">
+                <div class="nl-privacy" id="nlPrivacy">
+                  By submitting this form you agree that the personal data you
+                  provided will be transferred to Brevo for processing in
+                  accordance with <a href="#">Brevo's Privacy Policy</a>.
+                </div>
+              </div>
+
+              <!-- Email form -->
+              <div class="nl-form-area">
+                <form class="nl-form-inner" id="subscribeForm">
+                  <input
+                    type="email"
+                    class="nl-email-input"
+                    placeholder="Your email"
+                    required
+                    autocomplete="email"
+                  />
+                  <input type="submit" value="" style="display: none" />
+                </form>
+              </div>
+
+              <!-- Submit sparkle button -->
+              <div class="nl-submit-area">
+                <button class="btn-sparkle-dark" id="nlSubmitBtn">
+                  <div class="sparkle-icon">
+                    <div class="line line-r"></div>
+                    <div class="line line-l"></div>
+                    <div class="line line-t"></div>
+                    <div class="line line-b"></div>
+                    <div class="line line2-r"></div>
+                    <div class="line line2-l"></div>
+                    <div class="line line2-t"></div>
+                    <div class="line line2-b"></div>
+                  </div>
+                  <div class="btn-sparkle-label">Submit</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer — bottom of same section -->
+        <div class="finale-footer">
+          <!-- Left: logo + copyright -->
+          <div class="finale-footer-left">
+            <div>
+              <div class="finale-logo">Açaí Tides</div>
+            </div>
+            <div class="finale-copyright" id="finaleCopyright">
+              © 2026 Açaí Tides. All rights reserved
+            </div>
+          </div>
+
+          <!-- Right: nav links + social -->
+          <div class="finale-footer-right">
+            <nav class="finale-nav" id="finaleNav">
+              <a href="#" class="finale-nav-link">Menu</a>
+              <a href="#" class="finale-nav-link">Locations</a>
+              <a href="#" class="finale-nav-link">Our Story</a>
+              <a href="#" class="finale-nav-link">Ingredients</a>
+              <a href="#" class="finale-nav-link">Careers</a>
+              <a href="#" class="finale-nav-link">Catering</a>
+              <a href="#" class="finale-nav-link">Contact</a>
+            </nav>
+            <div class="finale-social">
+              <a href="#" aria-label="Instagram"
+                ><svg viewBox="0 0 24 24">
+                  <rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="20"
+                    rx="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  />
+                  <circle cx="17.5" cy="6.5" r="1.2" /></svg
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M22.54 6.42A2.78 2.78 0 0020.6 4.5C18.88 4 12 4 12 4s-6.88 0-8.6.5A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.4 19.5C5.12 20 12 20 12 20s6.88 0 8.6-.5a2.78 2.78 0 001.94-1.92A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12z"
+                  /></svg
+              ></a>
+              <a href="#" aria-label="Facebook"
+                ><svg viewBox="0 0 24 24">
+                  <path
+                    d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  /></svg
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </article>
+    <script src="script.js"></script>
+  </body>
+</html>
