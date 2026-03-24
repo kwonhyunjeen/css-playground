@@ -27,6 +27,16 @@ export const categories: Category[] = [
         },
         tags: ["interaction", "hover"],
       },
+      {
+        slug: "drag-with-snake",
+        title: "Drag Snake",
+        description: "마우스를 드래그하면 뱀처럼 따라오는 인터랙션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/drag-with-snake/index.html",
+        },
+        tags: ["interaction", "hover"],
+      },
     ],
   },
   {
