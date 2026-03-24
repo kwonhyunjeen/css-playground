@@ -2,19 +2,30 @@ import type { Category, Project } from "@/types";
 
 export const categories: Category[] = [
   {
-    slug: "clip-path",
-    title: "CSS Clip Path",
-    description: "clip-path 속성을 활용한 다양한 시각 효과",
+    slug: "interaction",
+    title: "Interaction",
+    description: "마우스 인터랙션을 활용한 다양한 효과",
     projects: [
       {
-        slug: "circle-reveal",
-        title: "Circle Reveal",
-        description: "clip-path: circle()을 활용한 이미지 공개 효과",
+        slug: "drag-with-spring",
+        title: "Drag Spring Grid",
+        description: "드래그 시 스프링 물리 효과로 반응하는 그리드 인터랙션",
         thumbnail: {
           type: "iframe",
-          src: "/demos/clip-path/circle-reveal/index.html",
+          src: "/demos/interaction/drag-with-spring/index.html",
         },
-        tags: ["clip-path", "hover", "transition"],
+        tags: ["drag", "spring", "grid", "interaction"],
+      },
+      {
+        slug: "dots-menu",
+        title: "Dots Menu Animation",
+        description:
+          "9개 점 메뉴를 hover하면 사방으로 아이콘이 펼쳐지는 애니메이션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/dots-menu/index.html",
+        },
+        tags: ["interaction", "hover"],
       },
     ],
   },
@@ -36,24 +47,7 @@ export const categories: Category[] = [
       },
     ],
   },
-  {
-    slug: "interaction",
-    title: "Interaction",
-    description: "hover, click 등 사용자 인터랙션을 활용한 UI 효과",
-    projects: [
-      {
-        slug: "dots-menu",
-        title: "Dots Menu Animation",
-        description:
-          "9개 점 메뉴를 hover하면 사방으로 아이콘이 펼쳐지는 애니메이션",
-        thumbnail: {
-          type: "iframe",
-          src: "/demos/interaction/dots-menu/index.html",
-        },
-        tags: ["interaction", "hover"],
-      },
-    ],
-  },
+
   {
     slug: "button",
     title: "Button Effects",
