@@ -55,6 +55,24 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "button",
+    title: "Button Effects",
+    description: "CSS로 구현한 다양한 버튼 애니메이션 효과",
+    projects: [
+      {
+        slug: "wavy",
+        title: "Wave Effect Button",
+        description:
+          "hover 시간에 따라 파도 레이어가 순차적으로 버튼을 채워가는 효과",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/wavy.mov",
+        },
+        tags: ["button", "hover", "animation"],
+      },
+    ],
+  },
+  {
     slug: "scroll",
     title: "Scroll Animation",
     description: "JavaScript로 구현한 스크롤 기반 애니메이션",
