@@ -37,6 +37,16 @@ export const categories: Category[] = [
         },
         tags: ["interaction", "hover"],
       },
+      {
+        slug: "product-card",
+        title: "Product Card",
+        description: "Product card effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/product-card/index.html",
+        },
+        tags: ["interaction", "card", "hover"],
+      },
     ],
   },
   {
