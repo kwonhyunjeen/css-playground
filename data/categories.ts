@@ -84,6 +84,16 @@ export const categories: Category[] = [
         },
         tags: ["button", "hover", "animation"],
       },
+      {
+        slug: "floating",
+        title: "Floating Action Button",
+        description: "Floating action button effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/button/floating/index.html",
+        },
+        tags: ["button", "hover", "animation"],
+      },
     ],
   },
   {
