@@ -19,6 +19,8 @@ body {
 
 .fab-container {
   position: relative;
+  /* right: 20px;
+  bottom: 20px; */
 }
 
 .fab-toggle {
@@ -26,8 +28,8 @@ body {
 }
 
 .fab-btn {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: #fda5d5;
   border: none;
@@ -89,26 +91,26 @@ body {
 }
 
 .fab-item:nth-of-type(1) {
-  --tx: -12px;
-  --ty: -88px;
+  --tx: -32px;
+  --ty: -72px;
   --open-delay: 0ms;
   --close-delay: 0ms;
 }
 .fab-item:nth-of-type(2) {
-  --tx: -28px;
-  --ty: -172px;
+  --tx: -50px;
+  --ty: -142px;
   --open-delay: 45ms;
   --close-delay: 30ms;
 }
 .fab-item:nth-of-type(3) {
-  --tx: -48px;
-  --ty: -254px;
+  --tx: -76px;
+  --ty: -213px;
   --open-delay: 90ms;
   --close-delay: 60ms;
 }
 .fab-item:nth-of-type(4) {
-  --tx: -72px;
-  --ty: -330px;
+  --tx: -110px;
+  --ty: -282px;
   --open-delay: 135ms;
   --close-delay: 90ms;
 }
@@ -131,8 +133,8 @@ body {
 }
 
 .item-circle {
-  width: 44px;
-  height: 44px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: transparent;
   border: 1.5px solid rgba(255, 255, 255, 0.2);

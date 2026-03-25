@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #52525c;
+  background: #3f3f46;
 }
 
 ul {
@@ -32,17 +32,17 @@ ul li:nth-child(1) {
 }
 
 ul li:nth-child(2) {
-  transition-delay: 0.4s;
+  transition-delay: 0.06s;
 }
 
 ul li:nth-child(3) {
-  transition-delay: 0.8s;
+  transition-delay: 0.11s;
 }
 
 ul li:nth-child(4) {
-  transition-delay: 1.2s;
+  transition-delay: 0.16s;
 }
 
 ul li:nth-child(5) {
-  transition-delay: 1.6s;
+  transition-delay: 0.21s;
 }

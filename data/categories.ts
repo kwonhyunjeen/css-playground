@@ -104,7 +104,7 @@ export const categories: Category[] = [
       {
         slug: "text-explode",
         title: "Text Explode",
-        description: "타이핑된 텍스트가 파티클과 함께 폭발하는 효과",
+        description: "텍스트 클릭 시 랜덤으로 흩어지는 효과",
         thumbnail: {
           type: "iframe",
           src: "/demos/text/text-explode/index.html",
