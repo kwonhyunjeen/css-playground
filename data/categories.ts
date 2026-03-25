@@ -77,6 +77,23 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "text",
+    title: "Text Effects",
+    description: "텍스트를 활용한 다양한 시각 효과",
+    projects: [
+      {
+        slug: "text-explode",
+        title: "Text Explode",
+        description: "타이핑된 텍스트가 파티클과 함께 폭발하는 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/text/text-explode/index.html",
+        },
+        tags: ["text", "animation", "particle"],
+      },
+    ],
+  },
+  {
     slug: "scroll",
     title: "Scroll Animation",
     description: "JavaScript로 구현한 스크롤 기반 애니메이션",
