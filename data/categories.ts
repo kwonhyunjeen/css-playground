@@ -101,6 +101,16 @@ export const categories: Category[] = [
         },
         tags: ["text", "animation", "particle"],
       },
+      {
+        slug: "text-smoky",
+        title: "Text Smoky",
+        description: "텍스트 hover 시 스모키한 효과를 주는 애니메이션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/text/text-smoky/index.html",
+        },
+        tags: ["text", "hover", "animation"],
+      },
     ],
   },
   {
