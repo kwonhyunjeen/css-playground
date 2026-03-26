@@ -1,0 +1,104 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0e0e11;
+  color: #ffffff;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.gallery {
+  display: flex;
+  gap: 30px;
+  z-index: 1;
+}
+
+.card {
+  width: 320px;
+  height: 480px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    filter 0.4s ease;
+  cursor: none;
+}
+
+.gallery:hover .card {
+  filter: brightness(0.5);
+}
+.gallery .card:hover {
+  transform: scale(1.02) translateY(-10px);
+  filter: brightness(1.1);
+}
+
+.cursor-tracker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.cursor-visual {
+  position: absolute;
+  top: -65px;
+  left: -65px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: rgba(14, 14, 17, 0.8);
+  backdrop-filter: blur(4px);
+
+  opacity: 0;
+  transform: scale(0.5);
+  transition:
+    opacity 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cursor-visual.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.cursor-text-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.cursor-text-wrapper span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffffff;
+  white-space: pre;
+}

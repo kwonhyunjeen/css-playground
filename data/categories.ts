@@ -47,6 +47,16 @@ export const categories: Category[] = [
         },
         tags: ["interaction", "card", "hover"],
       },
+      {
+        slug: "ticker-cursor",
+        title: "Ticker Cursor",
+        description: "마우스 커서에 텍스트가 따라오는 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/ticker-cursor/index.html",
+        },
+        tags: ["interaction", "cursor", "hover"],
+      },
     ],
   },
   {
