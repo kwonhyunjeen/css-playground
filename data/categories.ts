@@ -148,6 +148,16 @@ export const categories: Category[] = [
         },
         tags: ["scroll", "animation"],
       },
+      {
+        slug: "particle-morph",
+        title: "Particle Morph",
+        description: "스크롤과 마우스 인터랙션을 활용한 파티클 애니메이션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/scroll/particle-morph/index.html",
+        },
+        tags: ["scroll", "animation", "particle"],
+      },
     ],
   },
 ];

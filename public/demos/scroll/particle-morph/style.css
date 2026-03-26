@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #0b110d;
+  overflow-x: hidden;
+  height: 400vh;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+.instruction {
+  position: fixed;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  color: #2b7fff;
+  z-index: 2;
+  font-family: ui-monospace, "Cascadia Code", monospace;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  animation: pulse 2s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+}
