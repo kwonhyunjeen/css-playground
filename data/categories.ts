@@ -84,6 +84,16 @@ export const categories: Category[] = [
     description: "CSS로 구현한 다양한 버튼 애니메이션 효과",
     projects: [
       {
+        slug: "draw-line",
+        title: "Draw Line Button",
+        description: "Draw line button effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/button/draw-line/index.html",
+        },
+        tags: ["button", "hover", "animation"],
+      },
+      {
         slug: "wavy",
         title: "Wave Effect Button",
         description:
