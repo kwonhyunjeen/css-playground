@@ -1,0 +1,240 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  --text-main: #1d1d1f;
+  --text-muted: #515154;
+  --glass-divider: rgba(0, 0, 0, 0.06);
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#glass-bg {
+  position: relative;
+  background-color: #f0eef5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float 8s ease-in-out infinite alternate;
+}
+
+.bg-orb.o1 {
+  width: 280px;
+  height: 280px;
+  background: #ff9a76;
+  top: 10%;
+  left: 5%;
+  opacity: 0.7;
+}
+
+.bg-orb.o2 {
+  width: 320px;
+  height: 320px;
+  background: #c084fc;
+  top: 5%;
+  right: 5%;
+  opacity: 0.65;
+  animation-delay: -2s;
+  animation-duration: 10s;
+}
+
+.bg-orb.o3 {
+  width: 260px;
+  height: 260px;
+  background: #67e8f9;
+  bottom: 5%;
+  left: 30%;
+  opacity: 0.6;
+  animation-delay: -4s;
+  animation-duration: 12s;
+}
+
+.bg-orb.o4 {
+  width: 180px;
+  height: 180px;
+  background: #fbbf24;
+  bottom: 20%;
+  right: 10%;
+  opacity: 0.45;
+  animation-delay: -1s;
+  animation-duration: 9s;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(15px, -20px) scale(1.05);
+  }
+  66% {
+    transform: translate(-10px, 10px) scale(0.97);
+  }
+  100% {
+    transform: translate(8px, -8px) scale(1.02);
+  }
+}
+
+.accordion-container {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  padding: 4px 24px;
+  border-radius: 22px;
+  z-index: 2;
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.35) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(36px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(36px) saturate(180%) brightness(1.08);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.1),
+    0 4px 16px rgba(0, 0, 0, 0.06),
+    inset 0 1.5px 3px rgba(255, 255, 255, 0.7),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.15);
+}
+
+.glare-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  border-radius: 22px 22px 0 0;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0) 50%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+.glare-edge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border-radius: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.noise-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 22px;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 3;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 128px 128px;
+}
+
+.accordion-item {
+  position: relative;
+  z-index: 5;
+  border-bottom: 1px solid var(--glass-divider);
+}
+
+.accordion-item:last-child {
+  border-bottom: none;
+}
+
+.accordion-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s ease;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.accordion-header:hover {
+  opacity: 0.7;
+}
+
+.icon-svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  transform: rotate(0deg);
+  transition:
+    transform 0.5s var(--ease-spring),
+    color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.accordion-item.is-active .icon-svg {
+  transform: rotate(180deg);
+  color: var(--text-main);
+}
+
+.accordion-collapse {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.5s var(--ease-spring);
+}
+
+.accordion-content {
+  padding-bottom: 22px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.5s var(--ease-spring);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.accordion-item.is-active .accordion-content {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}

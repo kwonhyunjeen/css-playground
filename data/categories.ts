@@ -75,9 +75,18 @@ export const categories: Category[] = [
         },
         tags: ["glassmorphism"],
       },
+      {
+        slug: "acoordion",
+        title: "Accordion",
+        description: "Accordion effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/glassmorphism/acoordion/index.html",
+        },
+        tags: ["glassmorphism"],
+      },
     ],
   },
-
   {
     slug: "button",
     title: "Button Effects",
