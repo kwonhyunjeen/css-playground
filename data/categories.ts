@@ -194,6 +194,16 @@ export const categories: Category[] = [
         },
         tags: ["scroll", "animation", "particle"],
       },
+      {
+        slug: "loading-img-reveal",
+        title: "Loading Image Reveal",
+        description: "Loading image reveal effect using CSS transform",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/loading-img-reveal.mov",
+        },
+        tags: ["scroll", "animation", "image"],
+      },
     ],
   },
 ];
