@@ -60,6 +60,23 @@ export const categories: Category[] = [
     ],
   },
   {
+    slug: "animation",
+    title: "Animation",
+    description: "애니메이션 효과",
+    projects: [
+      {
+        slug: "3d-flip-card",
+        title: "3D Flip Card",
+        description: "3D flip card effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/animation/3d-flip-card/index.html",
+        },
+        tags: ["animation", "hover"],
+      },
+    ],
+  },
+  {
     slug: "glassmorphism",
     title: "Glassmorphism",
     description: "backdrop-filter와 투명도를 활용한 유리 질감 UI 효과",
