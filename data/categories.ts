@@ -74,6 +74,16 @@ export const categories: Category[] = [
         },
         tags: ["animation", "hover"],
       },
+      {
+        slug: "tab-navigation",
+        title: "Neumorphism Tab Navigation",
+        description: "Neumorphism Tab Navigation",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/animation/tab-navigation/index.html",
+        },
+        tags: ["animation", "hover", "neumorphism"],
+      },
     ],
   },
   {
@@ -82,19 +92,19 @@ export const categories: Category[] = [
     description: "backdrop-filter와 투명도를 활용한 유리 질감 UI 효과",
     projects: [
       {
-        slug: "glassmorphism-tab-bar",
+        slug: "tab-bar",
         title: "Glassmorphism Tab Bar",
         description:
           "CSS-only 탭 전환과 3단 레이어 유리 효과를 결합한 인터랙티브 패널",
         thumbnail: {
           type: "iframe",
-          src: "/demos/glassmorphism/glassmorphism-tab-bar/index.html",
+          src: "/demos/glassmorphism/tab-bar/index.html",
         },
         tags: ["glassmorphism"],
       },
       {
         slug: "acoordion",
-        title: "Accordion",
+        title: "Glassmorphism Accordion",
         description: "Accordion effect using CSS transform",
         thumbnail: {
           type: "iframe",
