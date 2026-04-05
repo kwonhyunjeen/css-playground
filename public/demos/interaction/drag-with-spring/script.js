@@ -1,4 +1,3 @@
-// ─── Spring Physics ───
 class Spring {
   constructor(pos, stiffness, damping) {
     this.pos = pos;
@@ -22,14 +21,12 @@ class Spring {
   }
 }
 
-// ─── Configuration ───
 const GRID = 4;
 const TOTAL = GRID * GRID;
 const BALL_SIZE = 80;
 const GAP = 24;
 const CELL = BALL_SIZE + GAP;
 
-// Base spring params — dragged ball
 const BASE_STIFFNESS = 180;
 const BASE_DAMPING = 18;
 
@@ -57,7 +54,6 @@ const BASE_HUES = [
   170, // row 3: pink, orange, lime, cyan
 ];
 
-// ─── State ───
 let balls = [];
 let dragging = false;
 let dragIndex = -1;
@@ -68,7 +64,7 @@ let mouseY = 0;
 let hueOffset = 0;
 let lastTime = performance.now();
 
-// ─── Compute grid center positions ───
+// Grid center positions
 function getGridPositions() {
   const totalW = GRID * BALL_SIZE + (GRID - 1) * GAP;
   const totalH = totalW;
@@ -88,7 +84,7 @@ function getGridPositions() {
   return positions;
 }
 
-// ─── Create balls ───
+// Create balls
 function createBalls() {
   const positions = getGridPositions();
 
@@ -114,17 +110,15 @@ function createBalls() {
       y: positions[i].y,
     });
 
-    // Position immediately
     el.style.transform = `translate(${positions[i].x - BALL_SIZE / 2}px, ${positions[i].y - BALL_SIZE / 2}px)`;
   }
 }
 
-// ─── Update spring params based on drag source ───
+// Update spring params
 function updateSpringParams(sourceBall) {
   for (let i = 0; i < TOTAL; i++) {
     const b = balls[i];
     if (i === dragIndex) {
-      // Dragged ball: very stiff, follows cursor tightly
       b.springX.stiffness = 600;
       b.springX.damping = 35;
       b.springY.stiffness = 600;
@@ -142,7 +136,6 @@ function updateSpringParams(sourceBall) {
   }
 }
 
-// ─── Pointer events ───
 document.addEventListener("pointerdown", (e) => {
   const target = e.target.closest(".ball");
   if (!target) return;
@@ -194,7 +187,6 @@ document.addEventListener("pointerup", (e) => {
   }
 });
 
-// ─── Handle resize ───
 window.addEventListener("resize", () => {
   if (!dragging) {
     const positions = getGridPositions();
@@ -205,7 +197,6 @@ window.addEventListener("resize", () => {
   }
 });
 
-// ─── Animation loop ───
 function animate(now) {
   const rawDt = (now - lastTime) / 1000;
   const dt = Math.min(rawDt, 0.033); // cap at ~30fps min step
@@ -249,13 +240,12 @@ function animate(now) {
     const hue = (b.baseHue + hueOffset) % 360;
     b.el.style.background = `hsl(${Math.round(hue)}, 85%, 60%)`;
 
-    // Position via transform
     b.el.style.transform = `translate(${b.x - BALL_SIZE / 2}px, ${b.y - BALL_SIZE / 2}px)`;
   }
 
   requestAnimationFrame(animate);
 }
 
-// ─── Init ───
+// Initialize
 createBalls();
 requestAnimationFrame(animate);

@@ -3,89 +3,135 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Floating Action Button</title>
-    <link rel="stylesheet" href="style.css" type="text/css" media="all" />
+    <title>Zen Editorial Journal App</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function updateDeviceScale() {
+        const paddingV = 80;
+        const paddingH = 32;
+        const scaleH = (window.innerHeight - paddingV) / 812;
+        const scaleW = (window.innerWidth - paddingH) / 375;
+        const scale = Math.min(scaleH, scaleW, 1);
+        document.documentElement.style.setProperty(
+          "--device-scale",
+          scale.toFixed(4),
+        );
+      }
+      updateDeviceScale();
+      window.addEventListener("resize", updateDeviceScale);
+    </script>
   </head>
   <body>
-    <div class="fab-container">
-      <input type="checkbox" id="fab-toggle" class="fab-toggle" />
+    <div class="device-mockup">
+      <div class="device-notch"></div>
 
-      <div class="fab-item">
-        <span class="item-label">Edit</span>
-        <div class="item-circle">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-          </svg>
+      <div class="app-container">
+        <div class="journal-grid"></div>
+        <div class="sunlight-sweep"></div>
+
+        <div class="mock-content">
+          <div class="date-header">
+            <span>Sunday</span>
+            April 5, 2026
+          </div>
+
+          <div class="paper-card">
+            <h3>Morning Reflections</h3>
+            <p>
+              The gentle sunlight reminds me to take things one step at a time
+              today. Focus on clarity and presence.
+            </p>
+          </div>
+          <div class="paper-card">
+            <h3>Project Ideas</h3>
+            <p>
+              Refining the minimalist UI. Sometimes removing elements creates a
+              much stronger impact than adding them.
+            </p>
+          </div>
+        </div>
+
+        <input type="checkbox" id="fab-toggle" class="fab-toggle" />
+        <label for="fab-toggle" class="focus-backdrop"></label>
+
+        <div class="fab-wrapper">
+          <div class="fab-item">
+            <span class="item-label">Write Journal</span>
+            <div class="item-circle">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M17 3a2.83 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="fab-item">
+            <span class="item-label">Capture Moment</span>
+            <div class="item-circle">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"
+                />
+                <circle cx="12" cy="13" r="4" />
+              </svg>
+            </div>
+          </div>
+
+          <div class="fab-item">
+            <span class="item-label">Voice Note</span>
+            <div class="item-circle">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"
+                ></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+            </div>
+          </div>
+
+          <div class="fab-item">
+            <span class="item-label">Location Tag</span>
+            <div class="item-circle">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+          </div>
+
+          <label for="fab-toggle" class="fab-btn">
+            <div class="icon-plus">
+              <span class="h"></span>
+              <span class="v"></span>
+            </div>
+          </label>
         </div>
       </div>
-
-      <div class="fab-item">
-        <span class="item-label">Camera</span>
-        <div class="item-circle">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"
-            />
-            <circle cx="12" cy="13" r="4" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="fab-item">
-        <span class="item-label">Image</span>
-        <div class="item-circle">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <rect x="3" y="3" width="18" height="18" rx="2" />
-            <circle cx="8.5" cy="8.5" r="1.5" />
-            <polyline points="21 15 16 10 5 21" />
-          </svg>
-        </div>
-      </div>
-
-      <div class="fab-item">
-        <span class="item-label">File</span>
-        <div class="item-circle">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-          </svg>
-        </div>
-      </div>
-
-      <label for="fab-toggle" class="fab-btn">
-        <div class="icon-plus">
-          <span class="h"></span>
-          <span class="v"></span>
-        </div>
-      </label>
     </div>
   </body>
 </html>

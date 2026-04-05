@@ -23,14 +23,14 @@ document.addEventListener("mousemove", (e) => {
   const my = e.clientY;
 
   cardData.forEach((card) => {
-    //자석 효과
+    // Magnetic 효과
     const dx = mx - card.centerX;
     const dy = my - card.centerY;
 
     // 마우스와의 거리 계산
     const dist = Math.sqrt(dx * dx + dy * dy);
 
-    // 특정 거리(300px) 안에 있을 때만 반응
+    // 300px 안에 있을 때만 반응
     if (dist < 300) {
       const tx = dx * MAG_STRENGTH * (1 - dist / 300);
       const ty = dy * MAG_STRENGTH * (1 - dist / 300);

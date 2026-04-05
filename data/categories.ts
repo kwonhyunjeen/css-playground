@@ -22,8 +22,8 @@ export const categories: Category[] = [
         description:
           "9개 점 메뉴를 hover하면 사방으로 아이콘이 펼쳐지는 애니메이션",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/interaction/dots-menu/index.html",
+          type: "video",
+          src: "/thumbnails/dots-menu-button.mov",
         },
         tags: ["interaction", "hover"],
       },
@@ -52,8 +52,8 @@ export const categories: Category[] = [
         title: "Product Card",
         description: "Product card effect using CSS transform",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/interaction/product-card/index.html",
+          type: "video",
+          src: "/thumbnails/product-card.mov",
         },
         tags: ["interaction", "card", "hover"],
       },
@@ -89,8 +89,8 @@ export const categories: Category[] = [
         title: "Neumorphism Tab Navigation",
         description: "Neumorphism Tab Navigation",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/animation/tab-navigation/index.html",
+          type: "video",
+          src: "/thumbnails/tab-navigation.mov",
         },
         tags: ["animation", "hover", "neumorphism"],
       },
@@ -144,8 +144,8 @@ export const categories: Category[] = [
         title: "Draw Line Button",
         description: "Draw line button effect using CSS transform",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/button/draw-line/index.html",
+          type: "video",
+          src: "/thumbnails/draw-line-button.mov",
         },
         tags: ["button", "hover", "animation"],
       },
@@ -156,7 +156,7 @@ export const categories: Category[] = [
           "hover 시간에 따라 파도 레이어가 순차적으로 버튼을 채워가는 효과",
         thumbnail: {
           type: "video",
-          src: "/thumbnails/wavy.mov",
+          src: "/thumbnails/wavy-button.mov",
         },
         tags: ["button", "hover", "animation"],
       },
@@ -165,8 +165,8 @@ export const categories: Category[] = [
         title: "Floating Action Button",
         description: "Floating action button effect using CSS transform",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/button/floating/index.html",
+          type: "video",
+          src: "/thumbnails/floating-button.mov",
         },
         tags: ["button", "hover", "animation"],
       },
@@ -192,8 +192,8 @@ export const categories: Category[] = [
         title: "Text Smoky",
         description: "텍스트 hover 시 스모키한 효과를 주는 애니메이션",
         thumbnail: {
-          type: "iframe",
-          src: "/demos/text/text-smoky/index.html",
+          type: "video",
+          src: "/thumbnails/smoky-text.mov",
         },
         tags: ["text", "hover", "animation"],
       },
@@ -205,12 +205,12 @@ export const categories: Category[] = [
     description: "JavaScript로 구현한 스크롤 기반 애니메이션",
     projects: [
       {
-        slug: "scroll-01",
+        slug: "animation-web",
         title: "Scroll Animation",
         description: "스크롤에 따라 카드가 쌓이며 전환되는 풀스크린 효과",
         thumbnail: {
           type: "iframe",
-          src: "/demos/scroll/scroll-01/index.html",
+          src: "/demos/scroll/animation-web/index.html",
         },
         tags: ["scroll", "animation"],
       },

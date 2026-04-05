@@ -8,7 +8,18 @@
 
 body {
   min-height: 100vh;
-  background: #06050e;
+  background: #0a0a0a;
+  background-image:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(255, 255, 255, 0.04) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 100%,
+      rgba(255, 255, 255, 0.02) 0%,
+      transparent 40%
+    );
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   display: flex;
   align-items: center;
@@ -21,27 +32,31 @@ input[type="checkbox"] {
   display: none;
 }
 
-/* Big glass panel */
 .glass-panel {
   position: relative;
   z-index: 1;
   width: 540px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px) saturate(1.6);
-  -webkit-backdrop-filter: blur(8px) saturate(1.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.01);
   border-radius: 28px;
-  box-shadow:
-    0 24px 80px rgba(0, 0, 0, 0.55),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
   padding: 20px 20px 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
-/* Tab panels */
 .tab-panels {
   min-height: 216px;
 }
@@ -178,7 +193,6 @@ input[type="checkbox"] {
   );
 }
 
-/* Active card states */
 .card-input:checked + .card-label .ci-detail svg {
   fill: rgba(255, 255, 255, 0.95);
   filter: drop-shadow(0 1px 4px rgba(var(--accent), 0.5));
@@ -200,7 +214,6 @@ input[type="checkbox"] {
   transform: translate(5px, -5px) rotate(15deg);
 }
 
-/* Card label text */
 .card-name {
   font-size: 11px;
   font-weight: 400;
@@ -213,16 +226,22 @@ input[type="checkbox"] {
   color: rgba(255, 255, 255, 0.72);
 }
 
-/* Glass tab bar */
 .tab-bar {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.11);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
+
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.01);
   border-radius: 20px;
-  box-shadow:
-    0 4px 20px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.11);
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -380,7 +399,6 @@ input[type="checkbox"] {
   );
 }
 
-/* Tab 02 active */
 #tab-02:checked ~ .glass-panel .tab-icon--02 .ti-detail {
   filter: drop-shadow(1px 1px 3px rgba(255, 159, 10, 0.45));
 }

@@ -86,13 +86,11 @@ document.addEventListener("mousedown", (e) => {
     if (distance < EXPLOSION_RADIUS) {
       wordEl.dataset.exploding = "true";
 
-      // [핵심 로직] 방향 제한 (180도 부채꼴 범위 내 랜덤)
-
-      // 1. 마우스에서 단어를 향하는 정방향 각도 계산
+      // 핵심: 180도 부채꼴 범위 내 랜덤
+      // 마우스에서 단어를 향하는 정방향 각도 계산
       let baseAngle = Math.atan2(dy, dx);
 
-      // 2. 정방향을 기준으로 -90도 ~ +90도(총 180도) 사이의 무작위 오차 적용
-      // Math.PI는 180도를 의미하므로, (Math.random() - 0.5) * Math.PI는 -90도 ~ +90도 범위가 됩니다.
+      // 정방향을 기준으로 -90도 ~ +90도(총 180도) 사이의 무작위 오차 적용
       let randomAngle = baseAngle + (Math.random() - 0.5) * Math.PI;
 
       // 예외 처리: 단어의 중심축을 정확히 클릭해서 거리가 0이 된 경우 완전 무작위로 튕김
@@ -100,7 +98,6 @@ document.addEventListener("mousedown", (e) => {
         randomAngle = Math.random() * Math.PI * 2;
       }
 
-      // 3. 힘(Power)은 10~50 사이의 무작위 값
       const randomPower = Math.random() * 40 + 10;
 
       wordEl.dataset.vx = Math.cos(randomAngle) * randomPower;

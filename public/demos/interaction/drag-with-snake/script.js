@@ -1,4 +1,3 @@
-// ─── Spring physics engine ───
 class Spring {
   constructor(target, stiffness, damping) {
     this.position = target;
@@ -7,7 +6,6 @@ class Spring {
     this.stiffness = stiffness;
     this.damping = damping;
   }
-
   update(dt) {
     const force = -this.stiffness * (this.position - this.target);
     const dampingForce = -this.damping * this.velocity;
@@ -15,64 +13,67 @@ class Spring {
     this.position += this.velocity * dt;
     return this.position;
   }
-
   setTarget(t) {
     this.target = t;
   }
 }
 
-// ─── Configuration ───
-const COLORS = [
-  { bg: "#5686F5", shadow: "rgba(86,134,245,0.4)" },
-  { bg: "#7B61FF", shadow: "rgba(123,97,255,0.4)" },
-  { bg: "#A855F7", shadow: "rgba(168,85,247,0.4)" },
-  { bg: "#EC4899", shadow: "rgba(236,72,153,0.4)" },
-  { bg: "#F43F5E", shadow: "rgba(244,63,94,0.4)" },
-  { bg: "#F97316", shadow: "rgba(249,115,22,0.4)" },
-  { bg: "#EAB308", shadow: "rgba(234,179,8,0.4)" },
-  { bg: "#22C55E", shadow: "rgba(34,197,94,0.4)" },
-  { bg: "#06B6D4", shadow: "rgba(6,182,212,0.4)" },
-  { bg: "#3B82F6", shadow: "rgba(59,130,246,0.4)" },
-  { bg: "#8B5CF6", shadow: "rgba(139,92,246,0.4)" },
-  { bg: "#D946EF", shadow: "rgba(217,70,239,0.4)" },
-];
-
-let ballCount = 8;
-let baseStiffness = 120;
-let baseDamping = 14;
-
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
-let mouseActive = false;
-
+const frame = document.getElementById("appFrame");
 const cursor = document.getElementById("cursor");
-const glow = document.getElementById("glow");
 const hint = document.getElementById("hint");
+const controlsPanel = document.getElementById("controlsPanel");
 const linesCanvas = document.getElementById("linesCanvas");
 const ctx = linesCanvas.getContext("2d");
 
+let frameRect = frame.getBoundingClientRect();
+
+let mouseX = frameRect.width / 2;
+let mouseY = frameRect.height / 3;
+let mouseActive = false;
+
+let deviceScale = 1;
+
+function updateDeviceScale() {
+  const paddingV = 80;
+  const paddingH = 32;
+  const scaleH = (window.innerHeight - paddingV) / 844;
+  const scaleW = (window.innerWidth - paddingH) / 390;
+  deviceScale = Math.min(scaleH, scaleW, 1);
+  document.documentElement.style.setProperty(
+    "--device-scale",
+    deviceScale.toFixed(4),
+  );
+}
+
+let ballCount = 12;
+let baseStiffness = 150;
+let baseDamping = 16;
 let balls = [];
 
+// Create snake nodes
 function createBalls() {
-  document.querySelectorAll(".follower").forEach((el) => el.remove());
+  frame.querySelectorAll(".follower").forEach((el) => el.remove());
   balls = [];
 
   for (let i = 0; i < ballCount; i++) {
     const ratio = i / Math.max(ballCount - 1, 1);
-    const size = 50 - ratio * 30;
-    const stiffness = baseStiffness * (1 - ratio * 0.85);
-    const damping = baseDamping * (1 - ratio * 0.6);
-    const color = COLORS[i % COLORS.length];
+    const size = 36 - ratio * 28;
+    const stiffness = baseStiffness * (1 - ratio * 0.7);
+    const damping = baseDamping * (1 - ratio * 0.4);
+
+    const hue = 15 + ratio * 20;
+    const saturation = 80 - ratio * 30;
+    const lightness = 60 - ratio * 30;
+    const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 
     const el = document.createElement("div");
     el.className = "follower";
     el.style.width = size + "px";
     el.style.height = size + "px";
-    el.style.background = color.bg;
-    el.style.boxShadow = `0 0 ${20 + i * 4}px ${color.shadow}`;
-    el.style.opacity = 1 - ratio * 0.35;
+    el.style.background = color;
+    el.style.opacity = 1 - ratio * 0.2;
     el.style.zIndex = ballCount - i;
-    document.body.appendChild(el);
+    frame.appendChild(el);
 
     balls.push({
       el,
@@ -80,102 +81,115 @@ function createBalls() {
       springY: new Spring(mouseY, stiffness, damping),
       x: mouseX,
       y: mouseY,
-      color,
     });
   }
 }
 
-// ─── Event listeners ───
-document.addEventListener("pointermove", (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+// Interaction
+function updatePointerPosition(e) {
+  frameRect = frame.getBoundingClientRect();
+  mouseX = (e.clientX - frameRect.left) / deviceScale;
+  mouseY = (e.clientY - frameRect.top) / deviceScale;
 
   cursor.style.left = mouseX + "px";
   cursor.style.top = mouseY + "px";
 
   if (!mouseActive) {
     mouseActive = true;
-    hint.classList.add("hidden");
+    if (hint) hint.classList.add("hidden");
   }
+}
 
-  document.getElementById("mx").textContent = Math.round(mouseX);
-  document.getElementById("my").textContent = Math.round(mouseY);
+frame.addEventListener("pointermove", updatePointerPosition);
+frame.addEventListener("pointerdown", (e) => {
+  updatePointerPosition(e);
+  cursor.classList.add("pressing");
 });
-
-document.addEventListener("pointerdown", () =>
-  cursor.classList.add("pressing"),
-);
-document.addEventListener("pointerup", () =>
+frame.addEventListener("pointerup", () => cursor.classList.remove("pressing"));
+frame.addEventListener("pointerleave", () =>
   cursor.classList.remove("pressing"),
 );
 
-// Stiffness slider
-const stiffSlider = document.getElementById("stiffness");
-const stiffVal = document.getElementById("stiffVal");
-stiffSlider.addEventListener("input", () => {
-  baseStiffness = Number(stiffSlider.value);
-  stiffVal.textContent = baseStiffness;
+controlsPanel.addEventListener("pointerdown", (e) => e.stopPropagation());
+controlsPanel.addEventListener("pointermove", (e) => e.stopPropagation());
+
+controlsPanel.addEventListener(
+  "pointerenter",
+  () => (cursor.style.opacity = "0"),
+);
+controlsPanel.addEventListener(
+  "pointerleave",
+  () => (cursor.style.opacity = "1"),
+);
+
+// Controls
+document.getElementById("stiffness").addEventListener("input", (e) => {
+  baseStiffness = Number(e.target.value);
+  document.getElementById("stiffVal").textContent = baseStiffness;
   updateSpringParams();
 });
 
-// Damping slider
-const dampSlider = document.getElementById("damping");
-const dampVal = document.getElementById("dampVal");
-dampSlider.addEventListener("input", () => {
-  baseDamping = Number(dampSlider.value);
-  dampVal.textContent = baseDamping;
+document.getElementById("damping").addEventListener("input", (e) => {
+  baseDamping = Number(e.target.value);
+  document.getElementById("dampVal").textContent = baseDamping;
   updateSpringParams();
 });
 
-// Count buttons
 document.getElementById("countInc").addEventListener("click", () => {
-  if (ballCount < 12) {
-    ballCount++;
-    document.getElementById("countVal").textContent = ballCount;
-    document.getElementById("bc").textContent = ballCount;
-    createBalls();
+  if (ballCount < 30) {
+    ballCount += 2;
+    updateCount();
   }
 });
 document.getElementById("countDec").addEventListener("click", () => {
-  if (ballCount > 2) {
-    ballCount--;
-    document.getElementById("countVal").textContent = ballCount;
-    document.getElementById("bc").textContent = ballCount;
-    createBalls();
+  if (ballCount > 4) {
+    ballCount -= 2;
+    updateCount();
   }
 });
+
+function updateCount() {
+  document.getElementById("countVal").textContent = ballCount;
+  createBalls();
+}
 
 function updateSpringParams() {
   balls.forEach((b, i) => {
     const ratio = i / Math.max(ballCount - 1, 1);
-    const stiffness = baseStiffness * (1 - ratio * 0.85);
-    const damping = baseDamping * (1 - ratio * 0.6);
-    b.springX.stiffness = stiffness;
-    b.springX.damping = damping;
-    b.springY.stiffness = stiffness;
-    b.springY.damping = damping;
+    b.springX.stiffness = baseStiffness * (1 - ratio * 0.7);
+    b.springX.damping = baseDamping * (1 - ratio * 0.4);
+    b.springY.stiffness = baseStiffness * (1 - ratio * 0.7);
+    b.springY.damping = baseDamping * (1 - ratio * 0.4);
   });
 }
 
-// ─── Resize canvas ───
+// Canvas sizing
 function resizeCanvas() {
-  linesCanvas.width = window.innerWidth * devicePixelRatio;
-  linesCanvas.height = window.innerHeight * devicePixelRatio;
-  linesCanvas.style.width = window.innerWidth + "px";
-  linesCanvas.style.height = window.innerHeight + "px";
+  frameRect = frame.getBoundingClientRect();
+  const w = frame.offsetWidth;
+  const h = frame.offsetHeight;
+  linesCanvas.width = w * devicePixelRatio;
+  linesCanvas.height = h * devicePixelRatio;
+  linesCanvas.style.width = w + "px";
+  linesCanvas.style.height = h + "px";
   ctx.scale(devicePixelRatio, devicePixelRatio);
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
 
-// ─── Animation loop ───
+  if (!mouseActive) {
+    mouseX = w / 2;
+    mouseY = h / 3;
+  }
+}
+window.addEventListener("resize", () => {
+  updateDeviceScale();
+  resizeCanvas();
+});
+
 let lastTime = performance.now();
 
 function animate(now) {
   const dt = Math.min((now - lastTime) / 1000, 0.05);
   lastTime = now;
 
-  // Update springs
   balls.forEach((b) => {
     b.springX.setTarget(mouseX);
     b.springY.setTarget(mouseY);
@@ -184,33 +198,30 @@ function animate(now) {
     b.el.style.transform = `translate(calc(${b.x}px - 50%), calc(${b.y}px - 50%))`;
   });
 
-  // Update glow
-  if (balls.length > 0) {
-    const mid = balls[Math.floor(balls.length / 2)];
-    glow.style.transform = `translate(calc(${mid.x}px - 50%), calc(${mid.y}px - 50%))`;
-  }
-
-  // Draw connection lines
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  ctx.clearRect(0, 0, frameRect.width, frameRect.height);
   if (balls.length > 1) {
-    ctx.lineWidth = 1;
-    for (let i = 0; i < balls.length - 1; i++) {
-      const a = balls[i];
-      const nb = balls[i + 1];
-      const alpha = 0.12 - (i / balls.length) * 0.08;
-      ctx.strokeStyle = `rgba(86,134,245,${alpha})`;
-      ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(nb.x, nb.y);
-      ctx.stroke();
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.beginPath();
+    ctx.moveTo(balls[0].x, balls[0].y);
+
+    for (let i = 1; i < balls.length; i++) {
+      ctx.lineTo(balls[i].x, balls[i].y);
     }
+    ctx.strokeStyle = "rgba(229, 107, 68, 0.25)";
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
   }
 
   requestAnimationFrame(animate);
 }
 
-// ─── Init ───
-createBalls();
-cursor.style.left = mouseX + "px";
-cursor.style.top = mouseY + "px";
-requestAnimationFrame(animate);
+// Initialize
+setTimeout(() => {
+  updateDeviceScale();
+  resizeCanvas();
+  createBalls();
+  cursor.style.left = mouseX + "px";
+  cursor.style.top = mouseY + "px";
+  requestAnimationFrame(animate);
+}, 100);

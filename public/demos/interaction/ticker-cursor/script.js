@@ -20,8 +20,7 @@ cards.forEach((card) => {
         const span = document.createElement("span");
         span.textContent = char;
 
-        // [수정 3] 완벽한 원형 배치를 위한 삼각함수 절대 좌표 계산
-        // -90도를 더해 12시 방향부터 텍스트가 시작되도록 보정
+        // Adjust by adding -90 degrees (12시 방향부터 텍스트가 시작되도록 하기 위함)
         const rad = (i * angleStep - 90) * (Math.PI / 180);
 
         // radius 값(46)이 커서 테두리와 텍스트 사이의 여백(Padding)을 결정

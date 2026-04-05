@@ -2,332 +2,67 @@
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drag with Spring Follow — Clone</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Drag Snake App</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <style>
-      *,
-      *::before,
-      *::after {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --bg: #0a0a0f;
-        --bg-surface: #12121a;
-        --accent: #5686f5;
-        --accent-glow: rgba(86, 134, 245, 0.15);
-        --text: #e8e6e1;
-        --text-muted: #7a7872;
-        --text-dim: #4a4944;
-        --border: rgba(255, 255, 255, 0.06);
-      }
-
-      body {
-        background: var(--bg);
-        color: var(--text);
-        font-family: "Instrument Sans", sans-serif;
-        min-height: 100vh;
-        overflow: hidden;
-        cursor: none;
-      }
-
-      /* Custom cursor */
-      .cursor {
-        position: fixed;
-        width: 8px;
-        height: 8px;
-        background: var(--accent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 1000;
-        transform: translate(-50%, -50%);
-        box-shadow:
-          0 0 20px var(--accent-glow),
-          0 0 60px var(--accent-glow);
-        transition:
-          transform 0.15s ease,
-          opacity 0.3s ease;
-      }
-
-      .cursor.pressing {
-        transform: translate(-50%, -50%) scale(2);
-      }
-
-      /* Header */
-      .header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 100;
-        padding: 20px 32px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        backdrop-filter: blur(20px);
-        background: rgba(10, 10, 15, 0.6);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .header-title {
-        font-family: "Space Mono", monospace;
-        font-size: 13px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-      }
-
-      .header-title span {
-        color: var(--accent);
-      }
-
-      .header-badge {
-        font-family: "Space Mono", monospace;
-        font-size: 11px;
-        letter-spacing: 0.05em;
-        color: var(--text-dim);
-        padding: 6px 14px;
-        border: 1px solid var(--border);
-        border-radius: 100px;
-      }
-
-      /* Canvas area */
-      .canvas {
-        position: fixed;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Spring follower balls */
-      .follower {
-        position: fixed;
-        border-radius: 50%;
-        pointer-events: none;
-        will-change: transform;
-        transform: translate(-50%, -50%);
-      }
-
-      /* Grid background */
-      .grid-bg {
-        position: fixed;
-        inset: 0;
-        background-image:
-          linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.015) 1px,
-            transparent 1px
-          );
-        background-size: 60px 60px;
-        pointer-events: none;
-      }
-
-      /* Radial glow that follows the cluster */
-      .glow {
-        position: fixed;
-        width: 500px;
-        height: 500px;
-        border-radius: 50%;
-        pointer-events: none;
-        transform: translate(-50%, -50%);
-        background: radial-gradient(
-          circle,
-          rgba(86, 134, 245, 0.06) 0%,
-          transparent 70%
-        );
-        will-change: transform;
-      }
-
-      /* Control panel */
-      .controls {
-        position: fixed;
-        bottom: 28px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        padding: 14px 24px;
-        background: var(--bg-surface);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        backdrop-filter: blur(20px);
-      }
-
-      .control-group {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .control-label {
-        font-family: "Space Mono", monospace;
-        font-size: 11px;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        white-space: nowrap;
-      }
-
-      .control-value {
-        font-family: "Space Mono", monospace;
-        font-size: 12px;
-        color: var(--accent);
-        min-width: 28px;
-        text-align: right;
-      }
-
-      input[type="range"] {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 100px;
-        height: 3px;
-        background: var(--border);
-        border-radius: 2px;
-        outline: none;
-        cursor: none;
-      }
-
-      input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: var(--accent);
-        cursor: none;
-        border: 2px solid var(--bg);
-        box-shadow: 0 0 10px var(--accent-glow);
-      }
-
-      .divider {
-        width: 1px;
-        height: 24px;
-        background: var(--border);
-      }
-
-      .count-btn {
-        font-family: "Space Mono", monospace;
-        font-size: 14px;
-        color: var(--text-muted);
-        background: transparent;
-        border: 1px solid var(--border);
-        width: 28px;
-        height: 28px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: none;
-        transition: all 0.2s ease;
-        line-height: 1;
-      }
-
-      .count-btn:hover {
-        color: var(--accent);
-        border-color: rgba(86, 134, 245, 0.3);
-        background: rgba(86, 134, 245, 0.05);
-      }
-
-      /* Hint text */
-      .hint {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-family: "Space Mono", monospace;
-        font-size: 13px;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--text-dim);
-        pointer-events: none;
-        transition: opacity 0.8s ease;
-        opacity: 1;
-      }
-
-      .hint.hidden {
-        opacity: 0;
-      }
-
-      /* Info panel */
-      .info {
-        position: fixed;
-        top: 80px;
-        right: 28px;
-        z-index: 100;
-        font-family: "Space Mono", monospace;
-        font-size: 11px;
-        color: var(--text-dim);
-        text-align: right;
-        line-height: 1.8;
-      }
-
-      .info .val {
-        color: var(--text-muted);
-      }
-
-      /* Connection lines */
-      .lines-canvas {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        z-index: 1;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="grid-bg"></div>
-    <div class="glow" id="glow"></div>
-    <canvas class="lines-canvas" id="linesCanvas"></canvas>
+    <div class="mobile-frame" id="appFrame">
+      <canvas class="lines-canvas" id="linesCanvas"></canvas>
 
-    <div class="cursor" id="cursor"></div>
+      <div class="cursor" id="cursor"></div>
 
-    <div class="header">
-      <div class="header-title">Drag with <span>spring</span> follow</div>
-      <div class="header-badge">vanilla js · css animation portfolio</div>
-    </div>
-
-    <div class="hint" id="hint">move your mouse</div>
-
-    <div class="info" id="info">
-      <div>x: <span class="val" id="mx">0</span></div>
-      <div>y: <span class="val" id="my">0</span></div>
-      <div>balls: <span class="val" id="bc">8</span></div>
-    </div>
-
-    <div class="controls">
-      <div class="control-group">
-        <span class="control-label">Stiffness</span>
-        <input
-          type="range"
-          id="stiffness"
-          min="10"
-          max="300"
-          value="120"
-          step="1"
-        />
-        <span class="control-value" id="stiffVal">120</span>
+      <div class="header">
+        <div class="header-title">Interaction <span>Snake</span></div>
       </div>
-      <div class="divider"></div>
-      <div class="control-group">
-        <span class="control-label">Damping</span>
-        <input type="range" id="damping" min="2" max="40" value="14" step="1" />
-        <span class="control-value" id="dampVal">14</span>
-      </div>
-      <div class="divider"></div>
-      <div class="control-group">
-        <span class="control-label">Count</span>
-        <button class="count-btn" id="countDec">−</button>
-        <span class="control-value" id="countVal">8</span>
-        <button class="count-btn" id="countInc">+</button>
+
+      <div class="hint" id="hint">Touch & Drag</div>
+
+      <div class="controls" id="controlsPanel">
+        <div class="control-row">
+          <span class="control-label">Stiffness</span>
+          <input
+            type="range"
+            id="stiffness"
+            min="10"
+            max="300"
+            value="150"
+            step="1"
+          />
+          <span class="control-value" id="stiffVal">150</span>
+        </div>
+        <div class="control-row">
+          <span class="control-label">Damping</span>
+          <input
+            type="range"
+            id="damping"
+            min="2"
+            max="40"
+            value="16"
+            step="1"
+          />
+          <span class="control-value" id="dampVal">16</span>
+        </div>
+        <div
+          class="control-row"
+          style="justify-content: center; margin-top: 4px"
+        >
+          <div class="count-controls">
+            <button class="count-btn" id="countDec">−</button>
+            <span class="control-label" style="width: auto; margin: 0 4px"
+              >Nodes:
+              <span id="countVal" style="color: var(--text)">12</span></span
+            >
+            <button class="count-btn" id="countInc">+</button>
+          </div>
+        </div>
       </div>
     </div>
     <script src="script.js"></script>
