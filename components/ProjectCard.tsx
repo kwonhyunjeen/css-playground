@@ -16,7 +16,7 @@ function ThumbnailRenderer({
           src={thumbnail.src}
           title={title}
           tabIndex={-1}
-          className="pointer-events-none absolute top-0 left-0 h-[400%] w-[400%] origin-top-left scale-[0.25] border-none"
+          className="pointer-events-none absolute top-0 left-0 h-[200%] w-[200%] origin-top-left scale-[0.5] border-none"
         />
       </div>
     );
@@ -36,13 +36,17 @@ function ThumbnailRenderer({
   }
 
   return (
-    <Image
-      src={thumbnail.src}
-      alt={title}
-      fill
-      className="object-cover"
-      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-    />
+    <div className="absolute inset-4">
+      <div className="relative h-full w-full">
+        <Image
+          src={thumbnail.src}
+          alt={title}
+          fill
+          className="object-contain"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+        />
+      </div>
+    </div>
   );
 }
 

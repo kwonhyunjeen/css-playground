@@ -2,47 +2,237 @@ import type { Category, Project } from "@/types";
 
 export const categories: Category[] = [
   {
-    slug: "clip-path",
-    title: "CSS Clip Path",
-    description: "clip-path 속성을 활용한 다양한 시각 효과",
+    slug: "interaction",
+    title: "Interaction",
+    description: "마우스 인터랙션을 활용한 다양한 효과",
     projects: [
       {
-        slug: "circle-reveal",
-        title: "Circle Reveal",
-        description: "clip-path: circle()을 활용한 이미지 공개 효과",
+        slug: "drag-with-spring",
+        title: "Drag Spring Grid",
+        description: "드래그 시 스프링 물리 효과로 반응하는 그리드 인터랙션",
         thumbnail: {
           type: "iframe",
-          src: "/demos/clip-path/circle-reveal/index.html",
+          src: "/demos/interaction/drag-with-spring/index.html",
         },
-        tags: ["clip-path", "hover", "transition"],
+        tags: ["drag", "spring", "grid", "interaction"],
       },
       {
-        slug: "polygon-gallery",
-        title: "Polygon Gallery",
-        description: "다각형 클리핑으로 만든 이미지 갤러리",
-        thumbnail: { type: "img", src: "/thumbnails/placeholder.png" },
-        tags: ["clip-path", "polygon"],
+        slug: "dots-menu",
+        title: "Dots Menu Animation",
+        description:
+          "9개 점 메뉴를 hover하면 사방으로 아이콘이 펼쳐지는 애니메이션",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/dots-menu-button.mov",
+        },
+        tags: ["interaction", "hover"],
+      },
+      {
+        slug: "theme-switch",
+        title: "Theme Switch",
+        description: "App theme switch effect using CSS Variables",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/theme-switch.mov",
+        },
+        tags: ["drawer", "app design", "switch mode"],
+      },
+      {
+        slug: "drag-with-snake",
+        title: "Drag Snake",
+        description: "마우스를 드래그하면 뱀처럼 따라오는 인터랙션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/drag-with-snake/index.html",
+        },
+        tags: ["interaction", "hover"],
+      },
+      {
+        slug: "product-card",
+        title: "Product Card",
+        description: "Product card effect using CSS transform",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/product-card.mov",
+        },
+        tags: ["interaction", "card", "hover"],
+      },
+      {
+        slug: "ticker-cursor",
+        title: "Ticker Cursor",
+        description: "마우스 커서에 텍스트가 따라오는 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/interaction/ticker-cursor/index.html",
+        },
+        tags: ["interaction", "cursor", "hover"],
       },
     ],
   },
   {
-    slug: "card-effects",
-    title: "Card Effects",
-    description: "CSS transform과 perspective를 활용한 카드 효과",
+    slug: "animation",
+    title: "Animation",
+    description: "애니메이션 효과",
     projects: [
       {
-        slug: "flip-card",
+        slug: "3d-flip-card",
         title: "3D Flip Card",
-        description: "perspective와 rotateY를 활용한 카드 뒤집기",
-        thumbnail: { type: "img", src: "/thumbnails/placeholder.png" },
-        tags: ["transform", "perspective", "hover"],
+        description: "3D flip card effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/animation/3d-flip-card/index.html",
+        },
+        tags: ["animation", "hover"],
       },
       {
-        slug: "hover-card",
-        title: "Hover Card",
-        description: "마우스 위치에 반응하는 3D 기울기 효과",
-        thumbnail: { type: "img", src: "/thumbnails/placeholder.png" },
-        tags: ["transform", "perspective", "hover"],
+        slug: "tab-navigation",
+        title: "Neumorphism Tab Navigation",
+        description: "Neumorphism Tab Navigation",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/tab-navigation.mov",
+        },
+        tags: ["animation", "hover", "neumorphism"],
+      },
+      {
+        slug: "magnetic-motion",
+        title: "Magnetic Motion",
+        description: "마우스에 반응하여 움직이는 카드 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/animation/magnetic-motion/index.html",
+        },
+        tags: ["animation", "hover"],
+      },
+    ],
+  },
+  {
+    slug: "glassmorphism",
+    title: "Glassmorphism",
+    description: "backdrop-filter와 투명도를 활용한 유리 질감 UI 효과",
+    projects: [
+      {
+        slug: "tab-bar",
+        title: "Glassmorphism Tab Bar",
+        description:
+          "CSS-only 탭 전환과 3단 레이어 유리 효과를 결합한 인터랙티브 패널",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/glassmorphism/tab-bar/index.html",
+        },
+        tags: ["glassmorphism"],
+      },
+      {
+        slug: "acoordion",
+        title: "Glassmorphism Accordion",
+        description: "Accordion effect using CSS transform",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/glassmorphism/acoordion/index.html",
+        },
+        tags: ["glassmorphism"],
+      },
+    ],
+  },
+  {
+    slug: "button",
+    title: "Button Effects",
+    description: "CSS로 구현한 다양한 버튼 애니메이션 효과",
+    projects: [
+      {
+        slug: "draw-line",
+        title: "Draw Line Button",
+        description: "Draw line button effect using CSS transform",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/draw-line-button.mov",
+        },
+        tags: ["button", "hover", "animation"],
+      },
+      {
+        slug: "wavy",
+        title: "Wave Effect Button",
+        description:
+          "hover 시간에 따라 파도 레이어가 순차적으로 버튼을 채워가는 효과",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/wavy-button.mov",
+        },
+        tags: ["button", "hover", "animation"],
+      },
+      {
+        slug: "floating",
+        title: "Floating Action Button",
+        description: "Floating action button effect using CSS transform",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/floating-button.mov",
+        },
+        tags: ["button", "hover", "animation"],
+      },
+    ],
+  },
+  {
+    slug: "text",
+    title: "Text Effects",
+    description: "텍스트를 활용한 다양한 시각 효과",
+    projects: [
+      {
+        slug: "text-explode",
+        title: "Text Explode",
+        description: "텍스트 클릭 시 랜덤으로 흩어지는 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/text/text-explode/index.html",
+        },
+        tags: ["text", "animation", "particle"],
+      },
+      {
+        slug: "text-smoky",
+        title: "Text Smoky",
+        description: "텍스트 hover 시 스모키한 효과를 주는 애니메이션",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/smoky-text.mov",
+        },
+        tags: ["text", "hover", "animation"],
+      },
+    ],
+  },
+  {
+    slug: "scroll",
+    title: "Scroll Animation",
+    description: "JavaScript로 구현한 스크롤 기반 애니메이션",
+    projects: [
+      {
+        slug: "animation-web",
+        title: "Scroll Animation",
+        description: "스크롤에 따라 카드가 쌓이며 전환되는 풀스크린 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/scroll/animation-web/index.html",
+        },
+        tags: ["scroll", "animation"],
+      },
+      {
+        slug: "particle-morph",
+        title: "Particle Morph",
+        description: "스크롤과 마우스 인터랙션을 활용한 파티클 애니메이션",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/scroll/particle-morph/index.html",
+        },
+        tags: ["scroll", "animation", "particle"],
+      },
+      {
+        slug: "loading-img-reveal",
+        title: "Loading Image Reveal",
+        description: "Loading image reveal effect using CSS transform",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/loading-img-reveal.mov",
+        },
+        tags: ["scroll", "animation", "image"],
       },
     ],
   },
