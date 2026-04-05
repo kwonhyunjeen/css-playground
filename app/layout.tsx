@@ -7,7 +7,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "css-playground",
-  description: "CSS & JS 애니메이션 학습 포트폴리오",
+  description:
+    "A personal collection of CSS and JavaScript animation experiments.",
 };
 
 export default function RootLayout({
