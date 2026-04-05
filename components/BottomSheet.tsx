@@ -3,16 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
-import type { FlatProject } from "@/types";
+import type { Demo } from "@/types";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 
-export function BottomSheet({ project }: { project: FlatProject }) {
+export function BottomSheet({ demo }: { demo: Demo }) {
   const router = useRouter();
   const [isClosing, setIsClosing] = useState(false);
   const sheetRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef<number | null>(null);
-  const titleId = `modal-title-${project.slug}`;
+  const titleId = `modal-title-${demo.slug}`;
 
   const close = useCallback(() => setIsClosing(true), []);
 
@@ -87,14 +87,14 @@ export function BottomSheet({ project }: { project: FlatProject }) {
         </button>
         <div className="flex flex-1 flex-col overflow-hidden px-6 py-4">
           <h2 id={titleId} className="text-2xl font-semibold">
-            {project.title}
+            {demo.title}
           </h2>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
-            {project.description}
+            {demo.description}
           </p>
 
           <div className="mt-2 flex gap-2">
-            {project.tags.map((tag) => (
+            {demo.tags.map((tag) => (
               <span
                 key={tag}
                 className="rounded-md bg-gray-100 px-2 py-0.5 text-xs font-medium text-gray-600 uppercase dark:bg-gray-800 dark:text-gray-400"
@@ -107,9 +107,9 @@ export function BottomSheet({ project }: { project: FlatProject }) {
           {/* Demo */}
           <div className="mt-6 flex-1 overflow-hidden rounded-lg">
             <iframe
-              src={`/demos/${project.categorySlug}/${project.slug}/index.html`}
+              src={`/demos/${demo.slug}/index.html`}
               className="h-full w-full border-none"
-              title={project.title}
+              title={demo.title}
             />
           </div>
         </div>

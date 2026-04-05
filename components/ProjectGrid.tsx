@@ -1,14 +1,11 @@
 import { ProjectCard } from "@/components/ProjectCard";
-import type { FlatProject } from "@/types";
+import type { Demo } from "@/types";
 
-export function ProjectGrid({ projects }: { projects: FlatProject[] }) {
+export function ProjectGrid({ demos }: { demos: Demo[] }) {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {projects.map((project) => (
-        <ProjectCard
-          key={`${project.categorySlug}-${project.slug}`}
-          project={project}
-        />
+      {demos.map((demo) => (
+        <ProjectCard key={demo.slug} demo={demo} />
       ))}
     </div>
   );
