@@ -28,6 +28,16 @@ export const categories: Category[] = [
         tags: ["interaction", "hover"],
       },
       {
+        slug: "theme-switch",
+        title: "Theme Switch",
+        description: "App theme switch effect using CSS Variables",
+        thumbnail: {
+          type: "video",
+          src: "/thumbnails/theme-switch.mov",
+        },
+        tags: ["drawer", "app design", "switch mode"],
+      },
+      {
         slug: "drag-with-snake",
         title: "Drag Snake",
         description: "마우스를 드래그하면 뱀처럼 따라오는 인터랙션",
