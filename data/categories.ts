@@ -94,6 +94,16 @@ export const categories: Category[] = [
         },
         tags: ["animation", "hover", "neumorphism"],
       },
+      {
+        slug: "magnetic-motion",
+        title: "Magnetic Motion",
+        description: "마우스에 반응하여 움직이는 카드 효과",
+        thumbnail: {
+          type: "iframe",
+          src: "/demos/animation/magnetic-motion/index.html",
+        },
+        tags: ["animation", "hover"],
+      },
     ],
   },
   {
