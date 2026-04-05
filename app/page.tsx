@@ -1,7 +1,22 @@
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { demos } from "@/data/demos";
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const query = q?.toLowerCase().trim() ?? "";
+
+  const filtered = query
+    ? demos.filter(
+        (d) =>
+          d.title.toLowerCase().includes(query) ||
+          d.tags.some((t) => t.toLowerCase().includes(query)),
+      )
+    : demos;
+
   return (
     <div className="space-y-12">
       <section className="flex flex-col items-center space-y-3 text-center">
@@ -13,7 +28,7 @@ export default function Home() {
           clip-path, transforms, scroll effects, SVG, and more.
         </p>
       </section>
-      <ProjectGrid demos={demos} />
+      <ProjectGrid demos={filtered} />
     </div>
   );
 }
