@@ -9,9 +9,8 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/drag-with-spring/index.html",
     },
-    tags: ["drag", "spring", "grid", "physics"],
+    tags: ["draggable", "animation", "physics"],
   },
-
   {
     slug: "theme-switch",
     title: "Theme Switch",
@@ -21,7 +20,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/theme-switch.mov",
     },
-    tags: ["theme", "drawer", "css variables"],
+    tags: ["theme", "drawer", "interaction"],
   },
   {
     slug: "product-card",
@@ -32,7 +31,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/product-card.mov",
     },
-    tags: ["card", "3d", "hover", "css transform"],
+    tags: ["card", "3d", "hover"],
   },
   {
     slug: "drag-with-snake",
@@ -43,9 +42,41 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/drag-with-snake/index.html",
     },
-    tags: ["drag", "spring", "canvas", "cursor"],
+    tags: ["draggable", "animation", "canvas"],
   },
-
+  {
+    slug: "glass-accordion",
+    title: "Glassmorphism Accordion",
+    description:
+      "An accordion with frosted glass styling, spring easing, and animated height transitions.",
+    thumbnail: {
+      type: "iframe",
+      src: "/demos/glass-accordion/index.html",
+    },
+    tags: ["glassmorphism", "ui components"],
+  },
+  {
+    slug: "glass-tab-bar",
+    title: "Glassmorphism Tab Bar",
+    description:
+      "A CSS-only tab panel with three layers of glassmorphism and a 45° glass float effect on interaction.",
+    thumbnail: {
+      type: "iframe",
+      src: "/demos/glass-tab-bar/index.html",
+    },
+    tags: ["glassmorphism", "ui components"],
+  },
+  {
+    slug: "floating-button",
+    title: "Floating Action Button",
+    description:
+      "A CSS-only FAB that expands into action items with spring cubic-bezier animation.",
+    thumbnail: {
+      type: "video",
+      src: "/thumbnails/floating-button.mov",
+    },
+    tags: ["navigation", "button", "animation"],
+  },
   {
     slug: "tab-navigation",
     title: "Neumorphism Tab Navigation",
@@ -69,48 +100,15 @@ export const demos: Demo[] = [
     tags: ["magnetic", "cursor", "physics"],
   },
   {
-    slug: "glass-tab-bar",
-    title: "Glassmorphism Tab Bar",
+    slug: "particle-morph",
+    title: "Particle Morph",
     description:
-      "A CSS-only tab panel with three layers of glassmorphism and a 45° glass float effect on interaction.",
+      "Particles that morph between sphere, wave, and grid shapes driven by scroll and mouse.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/glass-tab-bar/index.html",
+      src: "/demos/particle-morph/index.html",
     },
-    tags: ["glassmorphism", "ui components"],
-  },
-  {
-    slug: "glass-accordion",
-    title: "Glassmorphism Accordion",
-    description:
-      "An accordion with frosted glass styling, spring easing, and animated height transitions.",
-    thumbnail: {
-      type: "iframe",
-      src: "/demos/glass-accordion/index.html",
-    },
-    tags: ["glassmorphism", "ui components"],
-  },
-  {
-    slug: "floating-button",
-    title: "Floating Action Button",
-    description:
-      "A CSS-only FAB that expands into action items with spring cubic-bezier animation.",
-    thumbnail: {
-      type: "video",
-      src: "/thumbnails/floating-button.mov",
-    },
-    tags: ["navigation", "button"],
-  },
-  {
-    slug: "draw-line-button",
-    title: "Draw Line Button",
-    description:
-      "A circular button where a border draws around the circumference on hover, with a pen icon orbiting alongside.",
-    thumbnail: {
-      type: "video",
-      src: "/thumbnails/draw-line-button.mov",
-    },
-    tags: ["button", "hover", "animation"],
+    tags: ["scroll", "particle", "canvas"],
   },
   {
     slug: "application-folder",
@@ -121,7 +119,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/application-folder.mov",
     },
-    tags: ["menu", "hover", "animation"],
+    tags: ["application", "iOS", "animation"],
   },
   {
     slug: "wave-button",
@@ -134,15 +132,15 @@ export const demos: Demo[] = [
     tags: ["button", "hover", "animation"],
   },
   {
-    slug: "particle-morph",
-    title: "Particle Morph",
+    slug: "draw-line-button",
+    title: "Draw Line Button",
     description:
-      "Particles that morph between sphere, wave, and grid shapes driven by scroll and mouse.",
+      "A circular button where a border traces the circumference on hover, with a pen icon orbiting alongside.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/particle-morph/index.html",
+      type: "video",
+      src: "/thumbnails/draw-line-button.mov",
     },
-    tags: ["scroll", "particle", "canvas"],
+    tags: ["button", "hover", "animation"],
   },
   {
     slug: "text-explode",
@@ -153,7 +151,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/text-explode/index.html",
     },
-    tags: ["text", "particle", "animation"],
+    tags: ["particle", "animation"],
   },
   {
     slug: "text-smoky",
@@ -163,7 +161,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/smoky-text.mov",
     },
-    tags: ["text", "hover", "animation"],
+    tags: ["hover", "animation"],
   },
   {
     slug: "scroll-cards",
@@ -174,7 +172,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/scroll-cards/index.html",
     },
-    tags: ["scroll", "trigger"],
+    tags: ["scroll", "card"],
   },
   {
     slug: "ticker-cursor",
@@ -207,7 +205,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/3d-flip-card/index.html",
     },
-    tags: ["3d", "flip", "css transform"],
+    tags: ["3d", "flip", "card"],
   },
 ];
 
