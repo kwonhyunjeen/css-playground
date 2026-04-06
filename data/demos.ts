@@ -11,16 +11,7 @@ export const demos: Demo[] = [
     },
     tags: ["drag", "spring", "grid", "physics"],
   },
-  {
-    slug: "dots-menu",
-    title: "Dots Menu",
-    description: "Nine dots that expand into icons on hover.",
-    thumbnail: {
-      type: "video",
-      src: "/thumbnails/dots-menu-button.mov",
-    },
-    tags: ["menu", "hover", "animation"],
-  },
+
   {
     slug: "theme-switch",
     title: "Theme Switch",
@@ -120,6 +111,17 @@ export const demos: Demo[] = [
       src: "/thumbnails/draw-line-button.mov",
     },
     tags: ["button", "hover", "animation"],
+  },
+  {
+    slug: "application-folder",
+    title: "Application Folder",
+    description:
+      "A fluid glassmorphism folder featuring interactive drag-and-shift mechanics with natural spring physics.",
+    thumbnail: {
+      type: "video",
+      src: "/thumbnails/application-folder.mov",
+    },
+    tags: ["menu", "hover", "animation"],
   },
   {
     slug: "wave-button",
