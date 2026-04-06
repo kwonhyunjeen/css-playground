@@ -1,6 +1,17 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { Search } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { SearchInput } from "@/components/SearchInput";
+
+function SearchFallback() {
+  return (
+    <div className="relative flex w-56 items-center">
+      <Search className="absolute left-3 h-4 w-4 text-gray-400" />
+      <div className="w-full rounded-md border border-gray-200 py-1.5 pr-3 pl-9 dark:border-gray-700" />
+    </div>
+  );
+}
 
 export function Header() {
   return (
@@ -12,14 +23,9 @@ export function Header() {
         </span>
       </Link>
       <div className="flex items-center gap-3">
-        <div className="relative flex w-56 items-center transition-all duration-300 focus-within:w-72">
-          <Search className="absolute left-3 h-4 w-4 text-gray-400" />
-          <input
-            type="search"
-            placeholder="Search projects..."
-            className="w-full rounded-md border border-gray-200 bg-transparent py-1.5 pr-3 pl-9 text-sm placeholder:text-gray-400 focus:outline-none dark:border-gray-700"
-          />
-        </div>
+        <Suspense fallback={<SearchFallback />}>
+          <SearchInput />
+        </Suspense>
         <ThemeToggle />
       </div>
     </header>

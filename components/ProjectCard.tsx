@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { FlatProject, Thumbnail } from "@/types";
+import type { Demo, Thumbnail } from "@/types";
 
 function ThumbnailRenderer({
   thumbnail,
@@ -50,23 +50,20 @@ function ThumbnailRenderer({
   );
 }
 
-export function ProjectCard({ project }: { project: FlatProject }) {
+export function ProjectCard({ demo }: { demo: Demo }) {
   return (
     <Link
-      href={`/${project.categorySlug}/${project.slug}`}
+      href={`/demos/${demo.slug}`}
       className="group/card w-full text-left focus-visible:outline-none"
     >
       <div className="group/image relative cursor-pointer overflow-hidden rounded-lg">
         <div className="relative aspect-[4/3] bg-gray-100 dark:bg-gray-900">
-          <ThumbnailRenderer
-            thumbnail={project.thumbnail}
-            title={project.title}
-          />
+          <ThumbnailRenderer thumbnail={demo.thumbnail} title={demo.title} />
         </div>
         {/* Hover overlay */}
         <div className="absolute inset-0 bg-black/10 opacity-0 transition-opacity duration-300 group-hover/image:opacity-100" />
         <div className="absolute bottom-0 left-0 flex gap-2 p-5 opacity-0 transition-opacity duration-300 group-hover/image:opacity-100">
-          {project.tags.map((tag) => (
+          {demo.tags.map((tag) => (
             <span key={tag} className="text-md font-light text-white uppercase">
               {tag}
             </span>
@@ -74,7 +71,7 @@ export function ProjectCard({ project }: { project: FlatProject }) {
         </div>
       </div>
       <p className="mt-2 text-sm font-medium group-focus-visible/card:underline">
-        {project.title}
+        {demo.title}
       </p>
     </Link>
   );

@@ -1,24 +1,34 @@
 import { ProjectGrid } from "@/components/ProjectGrid";
-import { categories } from "@/data/categories";
+import { demos } from "@/data/demos";
 
-const allProjects = categories.flatMap((cat) =>
-  cat.projects.map((project) => ({ ...project, categorySlug: cat.slug })),
-);
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
+  const query = q?.toLowerCase().trim() ?? "";
 
-export default function Home() {
+  const filtered = query
+    ? demos.filter(
+        (d) =>
+          d.title.toLowerCase().includes(query) ||
+          d.tags.some((t) => t.toLowerCase().includes(query)),
+      )
+    : demos;
+
   return (
     <div className="space-y-12">
       <section className="flex flex-col items-center space-y-3 text-center">
         <h1 className="text-8xl font-bold tracking-tight">
           CSS & JS ANIMATIONS
         </h1>
-        {/* TODO: Update description */}
         <p className="max-w-xl text-xl font-light text-gray-600 dark:text-gray-400">
           A personal collection of CSS and JavaScript animation experiments —
           clip-path, transforms, scroll effects, SVG, and more.
         </p>
       </section>
-      <ProjectGrid projects={allProjects} />
+      <ProjectGrid demos={filtered} />
     </div>
   );
 }
