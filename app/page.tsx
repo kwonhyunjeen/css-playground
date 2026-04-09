@@ -1,21 +1,25 @@
+import { Suspense } from "react";
 import { ProjectGrid } from "@/components/ProjectGrid";
+import { ChipFilter } from "@/components/ChipFilter";
 import { demos } from "@/data/demos";
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; tag?: string }>;
 }) {
-  const { q } = await searchParams;
+  const { q, tag } = await searchParams;
   const query = q?.toLowerCase().trim() ?? "";
+  const activeTag = tag?.toLowerCase().trim() ?? "";
 
-  const filtered = query
-    ? demos.filter(
-        (d) =>
-          d.title.toLowerCase().includes(query) ||
-          d.tags.some((t) => t.toLowerCase().includes(query)),
-      )
-    : demos;
+  const filtered = demos.filter((d) => {
+    const matchesQuery =
+      !query ||
+      d.title.toLowerCase().includes(query) ||
+      d.tags.some((t) => t.toLowerCase().includes(query));
+    const matchesTag = !activeTag || d.tags.includes(activeTag);
+    return matchesQuery && matchesTag;
+  });
 
   return (
     <div className="space-y-12">
@@ -28,6 +32,9 @@ export default async function Home({
           clip-path, transforms, scroll effects, SVG, and more.
         </p>
       </section>
+      <Suspense>
+        <ChipFilter />
+      </Suspense>
       <ProjectGrid demos={filtered} />
     </div>
   );

@@ -9,7 +9,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/drag-with-spring/index.html",
     },
-    tags: ["draggable", "animation", "physics"],
+    tags: ["interaction", "draggable", "animation", "physics"],
   },
   {
     slug: "theme-switch",
@@ -42,7 +42,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/drag-with-snake/index.html",
     },
-    tags: ["draggable", "animation", "canvas"],
+    tags: ["interaction", "draggable", "animation", "physics", "canvas"],
   },
   {
     slug: "glass-accordion",
@@ -53,7 +53,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/glass-accordion/index.html",
     },
-    tags: ["glassmorphism", "ui components"],
+    tags: ["ui-component", "glassmorphism"],
   },
   {
     slug: "glass-tab-bar",
@@ -64,7 +64,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/glass-tab-bar/index.html",
     },
-    tags: ["glassmorphism", "ui components"],
+    tags: ["ui-component", "glassmorphism"],
   },
   {
     slug: "floating-button",
@@ -75,7 +75,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/floating-button.mov",
     },
-    tags: ["navigation", "button", "animation"],
+    tags: ["ui-component", "navigation", "button", "animation"],
   },
   {
     slug: "tab-navigation",
@@ -86,7 +86,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/tab-navigation.mov",
     },
-    tags: ["neumorphism", "tab", "soft ui"],
+    tags: ["ui-component", "neumorphism", "tab"],
   },
   {
     slug: "magnetic-motion",
@@ -97,7 +97,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/magnetic-motion/index.html",
     },
-    tags: ["magnetic", "cursor", "physics"],
+    tags: ["interaction", "magnetic", "cursor", "physics"],
   },
   {
     slug: "particle-morph",
@@ -119,7 +119,7 @@ export const demos: Demo[] = [
       type: "video",
       src: "/thumbnails/application-folder.mov",
     },
-    tags: ["application", "iOS", "animation"],
+    tags: ["interaction", "ui-component", "animation"],
   },
   {
     slug: "wave-button",
@@ -183,7 +183,7 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/ticker-cursor/index.html",
     },
-    tags: ["cursor", "ticker", "hover"],
+    tags: ["interaction", "cursor", "hover"],
   },
   {
     slug: "loading-img-reveal",
