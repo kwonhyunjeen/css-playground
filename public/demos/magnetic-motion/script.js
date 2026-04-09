@@ -1,3 +1,38 @@
+const CARDS = [
+  {
+    title: "Magnetic Motion",
+    color: "#3b82f6",
+    desc: "User interface feels alive and connected.",
+    badge: "Framer Style",
+  },
+  {
+    title: "Spring Physics",
+    color: "#a855f7",
+    desc: "Smooth, organic transitions with natural feel.",
+    badge: "Linear Touch",
+  },
+  {
+    title: "Spotlight Effect",
+    color: "#22c55e",
+    desc: "Highlight area based on mouse proximity.",
+    badge: "Minimal UI",
+  },
+];
+
+document.getElementById("grid").innerHTML = CARDS.map(
+  ({ title, color, desc, badge }) => `
+  <div class="card-wrapper">
+    <div class="card-content">
+      <div class="card-title">
+        <div class="icon" style="background: ${color}"></div>
+        ${title}
+      </div>
+      <div class="card-desc">${desc}</div>
+      <div class="card-badge">${badge}</div>
+    </div>
+  </div>`,
+).join("");
+
 const cards = document.querySelectorAll(".card-content");
 const MAG_STRENGTH = 0.12; // 자석의 강도 (0~1)
 
