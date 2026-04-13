@@ -2,102 +2,103 @@ import type { Demo } from "@/types";
 
 export const demos: Demo[] = [
   {
-    slug: "drag-with-spring",
-    title: "Drag Spring Grid",
-    description: "A grid that responds with spring physics when dragged.",
+    slug: "spring-physics-grid",
+    title: "Spring Physics Grid",
+    description:
+      "A grid that responds with dynamic spring physics and distance-based stiffness when dragged.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/drag-with-spring/index.html",
+      src: "/demos/spring-physics-grid/index.html",
     },
-    tags: ["interaction", "draggable", "animation", "physics"],
+    tags: ["interaction", "physics"],
   },
   {
     slug: "theme-switch",
     title: "Theme Switch",
     description:
-      "Dark and light theme transition driven by a drag gesture and CSS custom properties.",
+      "A swipe-to-reveal panel that transitions between dark and light themes, driven by a single --progress CSS custom property controlling scale, border-radius, and opacity simultaneously.",
     thumbnail: {
       type: "video",
       src: "/thumbnails/theme-switch.mov",
     },
-    tags: ["theme", "drawer", "interaction"],
+    tags: ["interaction", "mobile", "theme", "ui"],
   },
   {
     slug: "product-card",
     title: "Product Card",
     description:
-      "A 3D product card that rotates on hover using CSS perspective and transform.",
+      "A product card that rotates on hover using CSS perspective and transform.",
     thumbnail: {
       type: "video",
       src: "/thumbnails/product-card.mov",
     },
-    tags: ["card", "3d", "hover"],
+    tags: ["component", "hover", "interaction", "ui"],
   },
   {
-    slug: "drag-with-snake",
-    title: "Drag Snake",
+    slug: "cursor-trail",
+    title: "Cursor Trail",
     description:
-      "Cursor followers chained with spring physics, drawing a snake trail on canvas.",
+      "Cursor followers chained with spring physics, drawing a fluid trail on canvas.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/drag-with-snake/index.html",
+      src: "/demos/cursor-trail/index.html",
     },
-    tags: ["interaction", "draggable", "animation", "physics", "canvas"],
+    tags: ["cursor", "interaction"],
   },
   {
-    slug: "glass-accordion",
+    slug: "glassmorphism-accordion",
     title: "Glassmorphism Accordion",
     description:
       "An accordion with frosted glass styling, spring easing, and animated height transitions.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/glass-accordion/index.html",
+      src: "/demos/glassmorphism-accordion/index.html",
     },
-    tags: ["ui-component", "glassmorphism"],
+    tags: ["component", "glassmorphism", "ui"],
   },
   {
-    slug: "glass-tab-bar",
+    slug: "glassmorphism-tab-bar",
     title: "Glassmorphism Tab Bar",
     description:
       "A CSS-only tab panel with three layers of glassmorphism and a 45° glass float effect on interaction.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/glass-tab-bar/index.html",
+      src: "/demos/glassmorphism-tab-bar/index.html",
     },
-    tags: ["ui-component", "glassmorphism"],
+    tags: ["component", "glassmorphism", "ui"],
   },
   {
-    slug: "floating-button",
+    slug: "floating-action-button",
     title: "Floating Action Button",
     description:
       "A CSS-only FAB that expands into action items with spring cubic-bezier animation.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/floating-button.mov",
+      src: "/thumbnails/floating-action-button.mov",
     },
-    tags: ["ui-component", "navigation", "button", "animation"],
+    tags: ["component", "mobile", "ui"],
   },
   {
-    slug: "tab-navigation",
-    title: "Neumorphism Tab Navigation",
+    slug: "neumorphism-tab-bar",
+    title: "Neumorphism Tab Bar",
     description:
       "Soft UI tab bar built with neumorphic shadows and smooth transitions.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/tab-navigation.mov",
+      src: "/thumbnails/neumorphism-tab-bar.mov",
     },
-    tags: ["ui-component", "neumorphism", "tab"],
+    tags: ["component", "neumorphism", "ui"],
   },
   {
-    slug: "magnetic-motion",
-    title: "Magnetic Motion",
+    slug: "mouse-parallax-effect",
+    title: "Mouse Parallax Effect",
     description:
       "Cards that respond to the cursor with magnetic attraction and repulsion.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/magnetic-motion/index.html",
+      src: "/demos/mouse-parallax-effect/index.html",
     },
-    tags: ["interaction", "magnetic", "cursor", "physics"],
+    tags: ["cursor", "interaction", "ui"],
   },
   {
     slug: "particle-morph",
@@ -108,71 +109,71 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/particle-morph/index.html",
     },
-    tags: ["scroll", "particle", "canvas"],
+    tags: ["cursor", "interaction", "physics"],
   },
   {
-    slug: "application-folder",
-    title: "Application Folder",
+    slug: "fluid-glass-app-folder",
+    title: "Fluid-Glass App Folder",
     description:
-      "A fluid glassmorphism folder featuring interactive drag-and-shift mechanics with natural spring physics.",
+      "A fluid iOS-style folder with drag-and-shift mechanics, spring physics, and glassmorphism styling.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/application-folder.mov",
+      src: "/thumbnails/fluid-glass-app-folder.mov",
     },
-    tags: ["interaction", "ui-component", "animation"],
+    tags: ["component", "interaction", "mobile", "ui"],
   },
   {
-    slug: "wave-button",
+    slug: "wave-fill-button",
     title: "Wave Fill Button",
     description: "A button where wave layers sequentially fill in on hover.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/wavy-button.mov",
+      src: "/thumbnails/wave-fill-button.mov",
     },
-    tags: ["button", "hover", "animation"],
+    tags: ["component", "hover", "interaction", "ui"],
   },
   {
-    slug: "draw-line-button",
-    title: "Draw Line Button",
+    slug: "trace-border-button",
+    title: "Trace Border Button",
     description:
       "A circular button where a border traces the circumference on hover, with a pen icon orbiting alongside.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/draw-line-button.mov",
+      src: "/thumbnails/trace-border-button.mov",
     },
-    tags: ["button", "hover", "animation"],
+    tags: ["component", "hover", "interaction", "ui"],
   },
   {
-    slug: "text-explode",
-    title: "Text Explode",
+    slug: "text-explosion",
+    title: "Text Explosion",
     description:
       "Characters scatter as particles on click, then reassemble with a typing animation.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/text-explode/index.html",
+      src: "/demos/text-explosion/index.html",
     },
-    tags: ["particle", "animation"],
+    tags: ["interaction", "physics"],
   },
   {
-    slug: "text-smoky",
-    title: "Text Smoky",
+    slug: "smoky-text",
+    title: "Smoky Text",
     description: "Text dissolves into a smoky effect on hover.",
     thumbnail: {
       type: "video",
       src: "/thumbnails/smoky-text.mov",
     },
-    tags: ["hover", "animation"],
+    tags: ["hover"],
   },
   {
-    slug: "scroll-cards",
-    title: "Scroll Card Stack",
+    slug: "parallax-scrolling",
+    title: "Parallax Scrolling",
     description:
-      "Full-screen cards that stack and transition as the user scrolls.",
+      "Full-screen cards that reveal with a parallax effect as the user scrolls, stacking and transitioning between sections.",
     thumbnail: {
       type: "iframe",
-      src: "/demos/scroll-cards/index.html",
+      src: "/demos/parallax-scrolling/index.html",
     },
-    tags: ["scroll", "card"],
+    tags: ["scroll", "ui", "web"],
   },
   {
     slug: "ticker-cursor",
@@ -183,29 +184,18 @@ export const demos: Demo[] = [
       type: "iframe",
       src: "/demos/ticker-cursor/index.html",
     },
-    tags: ["interaction", "cursor", "hover"],
+    tags: ["cursor", "hover"],
   },
   {
-    slug: "loading-img-reveal",
-    title: "Loading Image Reveal",
+    slug: "image-scroll-animation",
+    title: "Image Scroll Animation",
     description:
-      "Images that progressively reveal on scroll with a loading bar animation.",
+      "Image layers that progressively reveal their content in sync with scroll position.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/loading-img-reveal.mov",
+      src: "/thumbnails/image-scroll-animation.mov",
     },
-    tags: ["scroll", "image", "reveal"],
-  },
-  {
-    slug: "3d-flip-card",
-    title: "3D Flip Card",
-    description:
-      "A card that flips in 3D on toggle, with images protruding beyond the card surface.",
-    thumbnail: {
-      type: "iframe",
-      src: "/demos/3d-flip-card/index.html",
-    },
-    tags: ["3d", "flip", "card"],
+    tags: ["scroll", "web"],
   },
 ];
 
