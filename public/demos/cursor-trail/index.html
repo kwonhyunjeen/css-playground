@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cursor Trail</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
@@ -14,54 +11,56 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="mobile-frame" id="appFrame">
-      <canvas class="lines-canvas" id="linesCanvas"></canvas>
+    <canvas class="lines-canvas" id="linesCanvas"></canvas>
 
-      <div class="cursor" id="cursor"></div>
+    <div class="cursor" id="cursor"></div>
 
-      <div class="header">
-        <div class="header-title">Interaction <span>Snake</span></div>
+    <div class="header">
+      <div class="header-title">Cursor <span>Trail</span></div>
+    </div>
+
+    <div class="hint" id="hint">Move Mouse</div>
+
+    <div class="controls" id="controlsPanel">
+      <div class="control-row">
+        <span class="control-label">Stiffness</span>
+        <input
+          type="range"
+          id="stiffness"
+          min="10"
+          max="300"
+          value="30"
+          step="1"
+        />
+        <span class="control-value" id="stiffVal">30</span>
       </div>
-
-      <div class="hint" id="hint">Touch & Drag</div>
-
-      <div class="controls" id="controlsPanel">
-        <div class="control-row">
-          <span class="control-label">Stiffness</span>
+      <div class="control-row">
+        <span class="control-label">Damping</span>
+        <input
+          type="range"
+          id="damping"
+          min="2"
+          max="40"
+          value="5"
+          step="1"
+        />
+        <span class="control-value" id="dampVal">5</span>
+      </div>
+      <div
+        class="control-row"
+        style="justify-content: center; margin-top: 4px"
+      >
+        <div class="count-controls">
+          <button class="count-btn" id="countDec">−</button>
           <input
-            type="range"
-            id="stiffness"
-            min="10"
-            max="300"
-            value="150"
-            step="1"
+            type="number"
+            id="countVal"
+            class="count-input"
+            min="4"
+            max="30"
+            value="10"
           />
-          <span class="control-value" id="stiffVal">150</span>
-        </div>
-        <div class="control-row">
-          <span class="control-label">Damping</span>
-          <input
-            type="range"
-            id="damping"
-            min="2"
-            max="40"
-            value="16"
-            step="1"
-          />
-          <span class="control-value" id="dampVal">16</span>
-        </div>
-        <div
-          class="control-row"
-          style="justify-content: center; margin-top: 4px"
-        >
-          <div class="count-controls">
-            <button class="count-btn" id="countDec">−</button>
-            <span class="control-label" style="width: auto; margin: 0 4px"
-              >Nodes:
-              <span id="countVal" style="color: var(--text)">12</span></span
-            >
-            <button class="count-btn" id="countInc">+</button>
-          </div>
+          <button class="count-btn" id="countInc">+</button>
         </div>
       </div>
     </div>
