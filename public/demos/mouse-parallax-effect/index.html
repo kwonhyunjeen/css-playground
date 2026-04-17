@@ -7,7 +7,85 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="grid" id="grid"></div>
+    <div class="bg-glow"></div>
+
+    <div id="app" class="app-container">
+      <div id="cursor" class="mouse-cursor"></div>
+
+      <div id="items-container" class="app-container" style="gap: 5rem">
+        <div
+          class="record-wrapper"
+          style="
+            --c1: rgba(168, 85, 247, 0.7);
+            --c2: rgba(236, 72, 153, 0.6);
+            --c3: rgba(56, 189, 248, 0.5);
+            --c4: rgba(139, 92, 246, 0.6);
+            --c5: rgba(244, 114, 182, 0.4);
+          "
+        >
+          <div class="record-disc">
+            <div class="record-grooves"></div>
+            <div class="spotlight"></div>
+            <div class="edge"></div>
+          </div>
+          <div class="record-label-container">
+            <div class="record-label" style="border-top: 2px solid #a855f7">
+              <span class="track-num">TRK 01</span>
+              <h2 class="album-title">System<br />Core</h2>
+              <span class="artist-name">Compute Logic</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="record-wrapper"
+          style="
+            --c1: rgba(34, 211, 238, 0.7);
+            --c2: rgba(59, 130, 246, 0.6);
+            --c3: rgba(16, 185, 129, 0.5);
+            --c4: rgba(6, 182, 212, 0.6);
+            --c5: rgba(129, 140, 248, 0.4);
+          "
+        >
+          <div class="record-disc">
+            <div class="record-grooves"></div>
+            <div class="spotlight"></div>
+            <div class="edge"></div>
+          </div>
+          <div class="record-label-container">
+            <div class="record-label" style="border-top: 2px solid #22d3ee">
+              <span class="track-num">TRK 02</span>
+              <h2 class="album-title">Security<br />Protocol</h2>
+              <span class="artist-name">Encrypted</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="record-wrapper"
+          style="
+            --c1: rgba(244, 63, 94, 0.7);
+            --c2: rgba(251, 146, 60, 0.6);
+            --c3: rgba(250, 204, 21, 0.5);
+            --c4: rgba(225, 29, 72, 0.6);
+            --c5: rgba(253, 186, 116, 0.4);
+          "
+        >
+          <div class="record-disc">
+            <div class="record-grooves"></div>
+            <div class="spotlight"></div>
+            <div class="edge"></div>
+          </div>
+          <div class="record-label-container">
+            <div class="record-label" style="border-top: 2px solid #f43f5e">
+              <span class="track-num">TRK 03</span>
+              <h2 class="album-title">Power<br />Control</h2>
+              <span class="artist-name">Grid Stable</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

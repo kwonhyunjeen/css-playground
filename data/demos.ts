@@ -93,7 +93,7 @@ export const demos: Demo[] = [
     slug: "mouse-parallax-effect",
     title: "Mouse Parallax Effect",
     description:
-      "Cards that respond to the cursor with magnetic attraction and repulsion.",
+      "Two-layer cards driven by spring physics — outer shell and inner content sway at different depths with the cursor, with a radial spotlight and edge glow on hover.",
     thumbnail: {
       type: "iframe",
       src: "/demos/mouse-parallax-effect/index.html",

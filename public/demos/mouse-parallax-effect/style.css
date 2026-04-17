@@ -1,85 +1,227 @@
-:root {
-  --bg: #0a0a0c;
-  --card-bg: #141416;
-  --border: rgba(255, 255, 255, 0.04);
-  --spotlight: rgba(255, 255, 255, 0.03);
-  --font: "Inter", sans-serif;
-}
-
 body {
-  background-color: var(--bg);
-  color: #ededef;
-  font-family: var(--font);
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
+  padding: 0;
   overflow: hidden;
+  background-color: #050507;
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  width: 100%;
-  max-width: 900px;
-  padding: 20px;
-}
-
-.card-wrapper {
+.app-container {
   position: relative;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
   overflow: hidden;
-  background-image: radial-gradient(
-    circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    var(--spotlight) 0%,
-    transparent 100%
-  );
-  pointer-events: none;
+  padding: 0 2.5rem;
+  box-sizing: border-box;
 }
 
-.card-content {
-  padding: 24px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  pointer-events: auto;
-  transition: transform 0.15s cubic-bezier(0.2, 0, 0.2, 1);
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+.bg-glow {
+  pointer-events: none;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 70%
+  );
+}
+
+.mouse-cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  height: 400px;
+  width: 400px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+  opacity: 0;
+}
+
+.record-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 232px;
+  aspect-ratio: 1 / 1;
+  flex-shrink: 0;
+  perspective: 1200px;
+  z-index: 10;
+}
+
+.record-disc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+  -webkit-mask: radial-gradient(circle at center, transparent 35px, black 36px);
+  mask: radial-gradient(circle at center, transparent 35px, black 36px);
+  overflow: hidden;
   will-change: transform;
 }
 
-.card-title {
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: #ededef;
+.record-grooves {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-radial-gradient(
+    circle at center,
+    transparent 0,
+    transparent 1.5px,
+    rgba(255, 255, 255, 0.03) 2px,
+    transparent 3px
+  );
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.2, 0, 0.2, 1);
+  z-index: 10;
+  opacity: 0;
+  mix-blend-mode: screen;
+  /* 5가지 색상의 그라데이션 */
+  background:
+    radial-gradient(
+      160px circle at calc(var(--mouse-x) - 70px) calc(var(--mouse-y) - 50px),
+      var(--c1),
+      transparent 80%
+    ),
+    radial-gradient(
+      180px circle at calc(var(--mouse-x) + 60px) calc(var(--mouse-y) - 30px),
+      var(--c2),
+      transparent 80%
+    ),
+    radial-gradient(
+      200px circle at calc(var(--mouse-x) - 40px) calc(var(--mouse-y) + 60px),
+      var(--c3),
+      transparent 80%
+    ),
+    radial-gradient(
+      150px circle at calc(var(--mouse-x) + 30px) calc(var(--mouse-y) + 40px),
+      var(--c4),
+      transparent 80%
+    ),
+    radial-gradient(
+      220px circle at var(--mouse-x) var(--mouse-y),
+      var(--c5),
+      transparent 80%
+    );
+  filter: blur(25px) contrast(1.2);
+}
+
+.edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  z-index: 20;
+  opacity: 0;
+  padding: 1px;
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(255, 255, 255, 0.5),
+    transparent 50%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.record-label-container {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-.card-title .icon {
-  width: 14px;
-  height: 14px;
-  border-radius: 2px;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 30;
 }
 
-.card-desc {
-  font-size: 13px;
-  line-height: 1.5;
-  color: #a0a0a5;
-  margin-top: 8px;
+.record-label {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  background: linear-gradient(145deg, #151518 0%, #050506 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.card-badge {
-  font-size: 11px;
-  padding: 4px 10px;
-  background: #1e1e21;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  color: #ededef;
-  align-self: flex-start;
+.record-label::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #050507;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.track-num {
+  font-size: 8px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 3px;
+  margin-bottom: auto;
+  padding-top: 12px;
+}
+
+.album-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  margin: 0;
+  z-index: 2;
+  letter-spacing: -0.02em;
+}
+
+.artist-name {
+  font-size: 8px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: auto;
+  padding-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
 }
