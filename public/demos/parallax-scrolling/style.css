@@ -848,7 +848,7 @@ img {
   border-radius: var(--float-radius, 4px);
   overflow: hidden;
   transition: border-radius 0.1s linear;
-  background: url(./section4-granola.jpg) 100% / cover no-repeat;
+  background: url(./imgs/section4-granola.jpg) 100% / cover no-repeat;
 }
 
 .finale {

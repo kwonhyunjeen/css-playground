@@ -48,7 +48,7 @@ mainPanel.addEventListener("pointerdown", (e) => {
   mainPanel.setPointerCapture(e.pointerId);
 });
 
-mainPanel.addEventListener("pointermove", (e) => {
+document.addEventListener("pointermove", (e) => {
   if (!isDragging || isThemeSwitching) return;
 
   currentX = e.clientX;
@@ -84,8 +84,8 @@ const endGesture = (e) => {
   }
 };
 
-mainPanel.addEventListener("pointerup", endGesture);
-mainPanel.addEventListener("pointercancel", endGesture);
+document.addEventListener("pointerup", endGesture);
+document.addEventListener("pointercancel", endGesture);
 
 const themeContent = {
   light: {
