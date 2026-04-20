@@ -7,8 +7,8 @@ export const demos: Demo[] = [
     description:
       "A grid that responds with dynamic spring physics and distance-based stiffness when dragged.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/spring-physics-grid/index.html",
+      type: "video",
+      src: "/thumbnails/spring-physics-grid.mp4",
     },
     tags: ["interaction", "physics"],
   },
@@ -30,7 +30,7 @@ export const demos: Demo[] = [
       "A product card that rotates on hover using CSS perspective and transform.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/product-card.mov",
+      src: "/thumbnails/product-card.mp4",
     },
     tags: ["component", "hover", "interaction", "ui"],
   },
@@ -51,8 +51,8 @@ export const demos: Demo[] = [
     description:
       "An accordion with frosted glass styling, spring easing, and animated height transitions.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/glassmorphism-accordion/index.html",
+      type: "video",
+      src: "/thumbnails/glassmorphism-accordion.mp4",
     },
     tags: ["component", "glassmorphism", "ui"],
   },
@@ -85,7 +85,7 @@ export const demos: Demo[] = [
       "Soft UI tab bar built with neumorphic shadows and smooth transitions.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/neumorphism-tab-bar.mov",
+      src: "/thumbnails/neumorphism-tab-bar.mp4",
     },
     tags: ["component", "neumorphism", "ui"],
   },
@@ -95,8 +95,8 @@ export const demos: Demo[] = [
     description:
       "Two-layer cards driven by spring physics — outer shell and inner content sway at different depths with the cursor, with a radial spotlight and edge glow on hover.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/mouse-parallax-effect/index.html",
+      type: "video",
+      src: "/thumbnails/mouse-parallax-effect.mp4",
     },
     tags: ["cursor", "interaction", "ui"],
   },
@@ -106,8 +106,8 @@ export const demos: Demo[] = [
     description:
       "Particles that morph between sphere, wave, and grid shapes driven by scroll and mouse.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/particle-morph/index.html",
+      type: "video",
+      src: "/thumbnails/particle-morph.mp4",
     },
     tags: ["cursor", "interaction", "physics"],
   },
@@ -128,7 +128,7 @@ export const demos: Demo[] = [
     description: "A button where wave layers sequentially fill in on hover.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/wave-fill-button.mov",
+      src: "/thumbnails/wave-fill-button.mp4",
     },
     tags: ["component", "hover", "interaction", "ui"],
   },
@@ -139,7 +139,7 @@ export const demos: Demo[] = [
       "A circular button where a border traces the circumference on hover, with a pen icon orbiting alongside.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/trace-border-button.mov",
+      src: "/thumbnails/trace-border-button.mp4",
     },
     tags: ["component", "hover", "interaction", "ui"],
   },
@@ -181,8 +181,8 @@ export const demos: Demo[] = [
     description:
       "A custom cursor with a rotating image ticker that follows the mouse.",
     thumbnail: {
-      type: "iframe",
-      src: "/demos/ticker-cursor/index.html",
+      type: "video",
+      src: "/thumbnails/ticker-cursor.mp4",
     },
     tags: ["cursor", "hover"],
   },
