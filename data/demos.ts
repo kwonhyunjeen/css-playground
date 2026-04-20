@@ -19,7 +19,7 @@ export const demos: Demo[] = [
       "A swipe-to-reveal panel that transitions between dark and light themes, driven by a single --progress CSS custom property controlling scale, border-radius, and opacity simultaneously.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/theme-switch.mov",
+      src: "/thumbnails/theme-switch.mp4",
     },
     tags: ["interaction", "mobile", "theme", "ui"],
   },
@@ -74,7 +74,7 @@ export const demos: Demo[] = [
       "A CSS-only FAB that expands into action items with spring cubic-bezier animation.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/floating-action-button.mov",
+      src: "/thumbnails/floating-action-button.mp4",
     },
     tags: ["component", "mobile", "ui"],
   },
@@ -118,7 +118,7 @@ export const demos: Demo[] = [
       "A fluid iOS-style folder with drag-and-shift mechanics, spring physics, and glassmorphism styling.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/fluid-glass-app-folder.mov",
+      src: "/thumbnails/fluid-glass-app-folder.mp4",
     },
     tags: ["component", "interaction", "mobile", "ui"],
   },
@@ -160,7 +160,7 @@ export const demos: Demo[] = [
     description: "Text dissolves into a smoky effect on hover.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/smoky-text.mov",
+      src: "/thumbnails/smoky-text.mp4",
     },
     tags: ["hover"],
   },
@@ -193,7 +193,7 @@ export const demos: Demo[] = [
       "Image layers that progressively reveal their content in sync with scroll position.",
     thumbnail: {
       type: "video",
-      src: "/thumbnails/image-scroll-animation.mov",
+      src: "/thumbnails/image-scroll-animation.mp4",
     },
     tags: ["scroll", "web"],
   },
