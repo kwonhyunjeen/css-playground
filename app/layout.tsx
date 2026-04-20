@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "css-playground",
+  title: "CSS Playground",
   description:
     "A personal collection of CSS and JavaScript animation experiments.",
 };
