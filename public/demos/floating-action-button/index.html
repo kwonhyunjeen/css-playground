@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Floating Action Button</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function updateDeviceScale() {
+        const paddingV = 80;
+        const paddingH = 32;
+        const scaleH = (window.innerHeight - paddingV) / 812;
+        const scaleW = (window.innerWidth - paddingH) / 375;
+        const scale = Math.min(scaleH, scaleW, 1);
+        document.documentElement.style.setProperty(
+          "--device-scale",
+          scale.toFixed(4),
+        );
+      }
+      updateDeviceScale();
+      window.addEventListener("resize", updateDeviceScale);
+    </script>
+  </head>
+  <body>
+    <div class="device-mockup">
+      <div class="device-notch"></div>
+
+      <div class="app-container">
+        <div class="journal-grid"></div>
+        <div class="sunlight-sweep"></div>
+
+        <div class="mock-content">
+          <div class="date-header">
+            <span>Sunday</span>
+            April 5, 2026
+          </div>
+
+          <div class="paper-card">
+            <h3>Morning Reflections</h3>
+            <p>
+              The gentle sunlight reminds me to take things one step at a time
+              today. Focus on clarity and presence.
+            </p>
+          </div>
+          <div class="paper-card">
+            <h3>Project Ideas</h3>
+            <p>
+              Refining the minimalist UI. Sometimes removing elements creates a
+              much stronger impact than adding them.
+            </p>
+          </div>
+        </div>
+
+        <input type="checkbox" id="fab-toggle" class="fab-toggle" />
+        <label for="fab-toggle" class="focus-backdrop"></label>
+
+        <div class="fab-wrapper" id="fab-wrapper">
+          <label for="fab-toggle" class="fab-btn">
+            <div class="icon-plus">
+              <span class="h"></span>
+              <span class="v"></span>
+            </div>
+          </label>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>

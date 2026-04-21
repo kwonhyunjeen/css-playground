@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "css-playground",
+  title: "CSS Playground",
   description:
     "A personal collection of CSS and JavaScript animation experiments.",
 };
@@ -19,7 +19,7 @@ export default function RootLayout({
   modal: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="min-w-[748px]" suppressHydrationWarning>
       <body className="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
         <ThemeProvider defaultTheme="light" enableSystem={false}>
           <Marquee />

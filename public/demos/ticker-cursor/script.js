@@ -1,3 +1,23 @@
+const GALLERY_ITEMS = [
+  {
+    ticker: "• SPIDER MAN 🕸 🗽 🕷 • SPIDER MAN 🕸 🗽 🕷 ",
+    img: "./imgs/spiderman.jpg",
+  },
+  {
+    ticker: "• TOY STORY 🥔 🛸 🦖 • TOY STORY 🥔 🛸 🦖 ",
+    img: "./imgs/toystory.jpg",
+  },
+  {
+    ticker: "• DOOMS DAY 💥 🌋 💀 • DOOMS DAY 💥 🌋 💀 ",
+    img: "./imgs/doomsday.jpeg",
+  },
+];
+
+document.getElementById("gallery").innerHTML = GALLERY_ITEMS.map(
+  ({ ticker, img }) =>
+    `<div class="card" data-ticker="${ticker}" style="background-image: url('${img}')"></div>`,
+).join("");
+
 const tracker = document.getElementById("cursorTracker");
 const visual = document.getElementById("cursorVisual");
 const textWrapper = document.getElementById("cursorTextWrapper");
